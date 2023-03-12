@@ -2,30 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom"
 import { BiStoreAlt } from "react-icons/bi"
 import { RxTwitterLogo, RxInstagramLogo, RxDiscordLogo} from "react-icons/rx"
-import { AiOutlineYoutube } from "react-icons/ai"
+import { AiOutlineYoutube, AiOutlineMail } from "react-icons/ai"
 import { motion } from "framer-motion";
 import Logo from "../assets/logo.png"
 
 export default function Footer() {
     return ( 
-        <div className="grid grid-cols-1 sm:grid-cols-4 bg-[#3B3B3B] py-10 px-44">
-            <div className="text-[#CCCCCC] font-workSans text-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-4 bg-[#3B3B3B] py-10 px-8 sm:px-24 lg:px-10 xl:px-44">
+            <div className="text-[#CCCCCC] font-workSans text-lg mt-10 lg:mt-0">
                 <div className="flex mb-4">
                     <Link to="/" className="text-white font-semibold text-xl flex">
-                        <BiStoreAlt className="text-[#A259FF] mr-4" size="30px" />
-                        <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" />
+                        <BiStoreAlt className="text-[#A259FF]" size="30px" />
+                        <img src={Logo} alt="NFT Marketplace Logo" className="mt-2 pl-2" />
                     </Link>
                 </div>
                 <h4>NFT marketplace UI created with Anima for Figma.</h4>
                 <p className="mt-3">Join our community</p>
                 <div className="flex mt-3">
-                    <RxDiscordLogo size="30px" className="mr-3" /> 
-                    <AiOutlineYoutube size="30px" className="mr-3" />
-                    <RxTwitterLogo size="30px" className="mr-3" /> 
-                    <RxInstagramLogo size="30px" />
+                    <a href="https://www.discord.com">
+                        <RxDiscordLogo size="30px" className="mr-3" /> 
+                    </a>
+                    <a href="https://www.youtube.com">
+                        <AiOutlineYoutube size="30px" className="mr-3" />
+                    </a>
+                    <a href="https://www.twitter.com/paulogebe">
+                        <RxTwitterLogo size="30px" className="mr-3" /> 
+                    </a>
+                    <a href="https://www.instagram.com/paulogebe">
+                        <RxInstagramLogo size="30px" />
+                    </a>
                 </div>
             </div>
-            <div className="ml-24 font-workSans text-[#CCCCCC]">
+            <div className="lg:ml-24 font-workSans text-[#CCCCCC] mt-10 lg:mt-0">
                 <h4 className="mb-5 text-2xl text-white font-bold font-spaceMono">Explore</h4>
                 <Link to="/marketplace">
                     <p className="mb-3">Marketplace</p>
@@ -37,19 +45,26 @@ export default function Footer() {
                     <p>Connect a wallet</p>
                 </Link>  
             </div>
-            <div className="ml-20 col-span-2">
+            <div className="lg:ml-20 lg:col-span-2 mt-10 lg:mt-0">
                 <h4 className="text-xl mb-5 text-white font-bold font-spaceMono">Join Our Weekly Digest</h4>
-                <p className="text-[#CCCCCC] font-workSans text-[">Get exclusive promotions & updates straight to your inbox.</p>
-                <div className="relative mt-3">
+                <p className="text-[#CCCCCC] font-workSans w-72">Get exclusive promotions & updates straight to your inbox.</p>
+                <div className="relative mt-3 w-full sm:w-[26rem]">
                     <input
                         type="text"
-                        className="py-4 px-5 pr-48 w-full rounded-[20px] font-workSans outline-none"
+                        className="py-4 px-5 sm:pr-48 w-full sm:w-[26rem] rounded-[20px] font-workSans outline-none"
                         placeholder="Enter your email here"
                     />
                     <motion.button 
-                        className="absolute inset-y-0 right-0 px-14 py-2 bg-[#A259FF] font-bold text-white rounded-[20px]"
+                        className="hidden sm:block absolute inset-y-0 right-0 px-14 py-2 bg-[#A259FF] font-bold text-white rounded-[20px]"
                         whileHover={{ scale: 0.95 }}
                     >
+                        Subscribe
+                    </motion.button>
+                    <motion.button 
+                        className="flex mt-4 sm:hidden justify-center py-4 w-full bg-[#A259FF] font-bold text-white rounded-[20px]"
+                        whileHover={{ scale: 0.95 }}
+                    >
+                        <AiOutlineMail size="20px" className="mr-3" />
                         Subscribe
                     </motion.button>
                 </div>
