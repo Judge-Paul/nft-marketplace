@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="py-6">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="px-4 lg:px-20">
         <div className="flex justify-between">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-white font-semibold text-xl flex">

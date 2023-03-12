@@ -11,10 +11,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-4 bg-[#3B3B3B] py-10 px-8 sm:px-24 lg:px-10 xl:px-44">
             <div className="text-[#CCCCCC] font-workSans text-lg mt-10 lg:mt-0">
                 <div className="flex mb-4">
-                    <Link to="/" className="text-white font-semibold text-xl flex">
-                        <BiStoreAlt className="text-[#A259FF]" size="30px" />
-                        <img src={Logo} alt="NFT Marketplace Logo" className="mt-2 pl-2" />
-                    </Link>
+                    <BiStoreAlt className="text-[#A259FF]" size="30px" />
+                    <img src={Logo} alt="NFT Marketplace Logo" className="mt-2 pl-2" />
                 </div>
                 <h4>NFT marketplace UI created with Anima for Figma.</h4>
                 <p className="mt-3">Join our community</p>

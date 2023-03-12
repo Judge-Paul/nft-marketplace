@@ -1,10 +1,12 @@
 import React from "react";
 import Home from "../components/Home";
+import Trending from "../components/Trending";
 
 export default function HomePage() {
     return (
-        <div className="flex justify-center object-center xl:mx-36">
+        <>
             <Home />
-        </div>
+            <Trending />
+        </>
     )
 }
