@@ -2,32 +2,22 @@ import React from "react";
 import NFT from "../assets/highlighted-nft.png"
 import Animakid from "../assets/artists-avatars/Animakid.png"
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"
+import TrendingCard from "./cards/TrendingCard";
 
 export default function Trending() {
     return (
-        <div className="mt-20 font-workSans px-32 text-white">
+        <div className="mt-20 mb-20 font-workSans px-8 sm:px-32 text-white">
             <h4 className="text-3xl md:text-[2.5rem] font-bold">
                 Trending Collection
             </h4>
             <p className="text-lg sm:text-[1.35rem] mt-5 font-medium mb-20">
                 Checkout Our Weekly Updated Trending Collection.
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3">
-                <div className="mb-4">
-                    <img src={NFT} alt="" />
-                    <div className="grid grid-cols-3 gap-3 mt-4 mb-3">
-                        <img src={NFT} alt="Others" className="rounded-2xl" />
-                        <img src={NFT} alt="" className="rounded-2xl" />
-                        <div className="bg-[#A259FF] rounded-2xl flex justify-center items-center">
-                            <h4 className="font-spaceMono text-2xl font-semibold">1025+</h4>
-                        </div>
-                    </div>
-                    <h4 className="text-2xl font-medium">Dsgn Animals</h4>
-                    <div className="flex mt-2">
-                        <img src={Animakid} width="25px" />
-                        <p className="pl-4 text-lg font-medium">MrFox</p>
-                    </div>
-                </div>
+            <div className="flex justify-center gap-7 place-center">
+                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} />
+                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden lg:block"} />
+                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden xl:block"} />
             </div>
         </div>
     )

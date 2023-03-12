@@ -7,10 +7,10 @@ import { SlRocket } from "react-icons/sl"
 export default function Home() {
     return (
         <div className="flex justify-center object-center xl:mx-36">
-            <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid md:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">
+            <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid lg:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">
                 <div className="md:w-[20rem] xl:w-full mt-0">
                     <div>
-                        <h4 className="text-3xl md:text-[2.5rem] xl:text-[4.2rem] xl:leading-[4.5rem] xl:pr-20 font-bold">
+                        <h4 className="text-3xl lg:text-[2.5rem] xl:text-[4.2rem] xl:leading-[4.5rem] xl:pr-20 font-bold">
                             Discover Digital Art & Collect Nfts
                         </h4>
                     </div>
@@ -31,7 +31,7 @@ export default function Home() {
                         rotateY: [-35, 0, 35, 0, -35],
                         transition: { duration: 8, repeat: Infinity }
                     }}
-                    className="mx-8 lg:mx-14 backface-hidden shadow-xl"
+                    className="w-88 lg:mx-14 backface-hidden shadow-xl"
                 >
                     <div className="p-4 bg-[#404040] rounded-lg">
                         <img src={Highlighted} alt="Highlighted NFT" />
