@@ -19,7 +19,7 @@ export default function TrendingCard({img1, img2, img3, total, artist, title, av
                 </motion.div>
                 <motion.div whileHover={{ scale: 0.92 }} className="bg-[#A259FF] rounded-2xl flex justify-center items-center">
                     <Link to="/nft">
-                        <h4 className="font-spaceMono text-2xl font-semibold">{total}</h4>
+                        <h4 className="font-spaceMono text-xl sm:text-2xl font-semibold">{total}</h4>
                     </Link>
                 </motion.div>
             </div>
