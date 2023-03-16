@@ -1,8 +1,6 @@
 import React from "react";
 import NFT from "../assets/highlighted-nft.png"
 import Animakid from "../assets/artists-avatars/Animakid.png"
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom"
 import TrendingCard from "./cards/TrendingCard";
 
 export default function Trending() {

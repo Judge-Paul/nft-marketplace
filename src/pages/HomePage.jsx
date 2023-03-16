@@ -1,4 +1,5 @@
 import React from "react";
+import Category from "../components/Category";
 import Creators from "../components/Creators";
 import Home from "../components/Home";
 import Trending from "../components/Trending";
@@ -9,6 +10,7 @@ export default function HomePage() {
             <Home />
             <Trending />
             <Creators />
+            <Category />
         </>
     )
 }

@@ -22,7 +22,7 @@ function Navbar() {
                     className="text-white hover:text-gray-100 pr-10"
                     whileHover={{ scale: 0.92 }}
                   >
-                    <Link to="/wallet">
+                    <Link to="/marketplace">
                       Marketplace
                     </Link>
                 </motion.a>      
