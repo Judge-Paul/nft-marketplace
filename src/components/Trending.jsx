@@ -5,7 +5,7 @@ import TrendingCard from "./cards/TrendingCard";
 
 export default function Trending() {
     return (
-        <div className="mt-20 mb-20 font-workSans px-8 sm:px-32 text-white">
+        <div className="mt-20 mb-20 lg:mb-36 font-workSans px-8 sm:px-32 text-white">
             <h4 className="text-3xl md:text-[2.5rem] font-bold">
                 Trending Collection
             </h4>

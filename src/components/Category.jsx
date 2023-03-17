@@ -14,7 +14,7 @@ import CategoryCard from "./cards/CategoryCard";
 
 export default function Category() {
     return (
-        <div className="px-8 sm:px-32 mt-20 mb-20">
+        <div className="px-8 sm:px-32 mt-20 mb-20 lg:mb-36">
             <h4 className="text-3xl text-white md:text-[2.5rem] font-bold mb-20">
                 Browse Categories
             </h4>
