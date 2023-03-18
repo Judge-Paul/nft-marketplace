@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/Logo.png";
+import Logo from "../assets/Logo.png";
 import { BiStoreAlt } from "react-icons/bi"
 import { AiOutlineUser } from "react-icons/ai"
 import { motion } from "framer-motion";
@@ -13,7 +13,7 @@ function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-white font-semibold text-xl flex">
                 <BiStoreAlt className="text-[#A259FF] mr-4" size="32px" />
-                <img src={logo} alt="NFT Marketplace Logo" className="mt-2" />
+                <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" />
             </Link>
           </div>
           <div className="hidden lg:block font-workSans font-bold">
