@@ -11,7 +11,7 @@ export default function Discover() {
         <div
             className="mt-20 mb-20 lg:mb-36 font-workSans text-white"
         >
-            <div className="flex justify-between mb-20 px-8 sm:px-32">
+            <div className="flex justify-between px-8 sm:px-32">
                 <div>
                     <h4 className="text-3xl lg:text-[2.5rem] font-bold">
                         Discover More NFTs
