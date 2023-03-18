@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="text-[#CCCCCC] font-workSans text-lg mt-10 lg:mt-0">
                 <div className="flex mb-4">
                     <BiStoreAlt className="text-[#A259FF]" size="30px" />
-                    <img src={Logo} alt="NFT Marketplace Logo" className="mt-2 pl-2" />
+                    <h4 className="mb-5 pl-3 text-xl text-white font-bold font-spaceMono">NFT Marketplace</h4>
                 </div>
                 <h4>NFT marketplace UI created with Anima for Figma.</h4>
                 <p className="mt-3">Join our community</p>
@@ -44,7 +44,7 @@ export default function Footer() {
                 </Link>  
             </div>
             <div className="lg:ml-20 lg:col-span-2 mt-10 lg:mt-0">
-                <h4 className="text-xl mb-5 text-white font-bold font-spaceMono">Join Our Weekly Digest</h4>
+                <h4 className="text-2xl mb-5 text-white font-bold font-spaceMono">Join Our Weekly Digest</h4>
                 <p className="text-[#CCCCCC] font-workSans w-72">Get exclusive promotions & updates straight to your inbox.</p>
                 <div className="relative mt-3 w-full sm:w-[26rem]">
                     <input

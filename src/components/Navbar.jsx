@@ -18,30 +18,30 @@ function Navbar() {
           </div>
           <div className="hidden lg:block font-workSans font-bold">
             <div className="ml-10 flex items-center space-x-4">
-              <motion.a 
+              <Link to="/marketplace">
+                <motion.div 
                     className="text-white hover:text-gray-100 pr-10"
                     whileHover={{ scale: 0.92 }}
                   >
-                    <Link to="/marketplace">
                       Marketplace
-                    </Link>
-                </motion.a>      
-              <motion.a 
-                  className="text-white hover:text-gray-100 pr-10"
-                  whileHover={{ scale: 0.92 }}
-                >
-                  <Link to="/rankings">
-                    Rankings
-                  </Link>
-              </motion.a>
-              <motion.a 
-                  className="text-white hover:text-gray-100 pr-10"
-                  whileHover={{ scale: 0.92 }}
-                >
-                  <Link to="/connnect">
-                    Connect a wallet
-                  </Link>
-              </motion.a>
+                </motion.div>    
+              </Link>  
+              <Link to="/rankings">
+                <motion.div 
+                    className="text-white hover:text-gray-100 pr-10"
+                    whileHover={{ scale: 0.92 }}
+                  >
+                      Rankings
+                </motion.div>
+              </Link>
+              <Link to="/connnect">
+                <motion.div 
+                    className="text-white hover:text-gray-100 pr-10"
+                    whileHover={{ scale: 0.92 }}
+                  >
+                      Connect a wallet
+                </motion.div>
+              </Link>
               <Link to="/register" className="flex">
                 <motion.button
                   className="py-4 px-8 text-white flex rounded-2xl bg-[#A259FF]"
