@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="py-6">
-      <div className="px-4 lg:px-20">
+      <div className="px-6 xl:px-20">
         <div className="flex justify-between">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-white font-semibold text-xl flex">
@@ -16,11 +16,11 @@ function Navbar() {
                 <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" />
             </Link>
           </div>
-          <div className="hidden lg:block font-workSans font-bold">
-            <div className="ml-10 flex items-center space-x-4">
+          <div className="hidden md:block font-workSans font-bold">
+            <div className="lg:ml-10 flex items-center space-x-4 md:text-sm lg:text-lg">
               <Link to="/marketplace">
                 <motion.div 
-                    className="text-white hover:text-gray-100 pr-10"
+                    className="text-white hover:text-gray-100 pr-1 lg:pr-5 xl:pr-10"
                     whileHover={{ scale: 0.92 }}
                   >
                       Marketplace
@@ -28,7 +28,7 @@ function Navbar() {
               </Link>  
               <Link to="/rankings">
                 <motion.div 
-                    className="text-white hover:text-gray-100 pr-10"
+                    className="text-white hover:text-gray-100 pr-1 lg:pr-5 xl:pr-10"
                     whileHover={{ scale: 0.92 }}
                   >
                       Rankings
@@ -36,7 +36,7 @@ function Navbar() {
               </Link>
               <Link to="/connnect">
                 <motion.div 
-                    className="text-white hover:text-gray-100 pr-10"
+                    className="text-white hover:text-gray-100 pr-1 lg:pr-5 xl:pr-10"
                     whileHover={{ scale: 0.92 }}
                   >
                       Connect a wallet
@@ -44,7 +44,7 @@ function Navbar() {
               </Link>
               <Link to="/register" className="flex">
                 <motion.button
-                  className="py-4 px-8 text-white flex rounded-2xl bg-[#A259FF]"
+                  className="md:py-3 md:px-5 lg:py-4 lg:px-8 text-white text-sm flex rounded-2xl bg-[#A259FF]"
                   whileHover={{ scale: 0.92 }}
                 >
                     <AiOutlineUser size="22px" className="mr-2" />
