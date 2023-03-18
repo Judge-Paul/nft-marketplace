@@ -4,7 +4,6 @@ import { BiStoreAlt } from "react-icons/bi"
 import { RxTwitterLogo, RxInstagramLogo, RxDiscordLogo} from "react-icons/rx"
 import { AiOutlineYoutube, AiOutlineMail } from "react-icons/ai"
 import { motion } from "framer-motion";
-import Logo from "../assets/logo.png"
 
 export default function Footer() {
     return ( 
