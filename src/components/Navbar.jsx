@@ -34,7 +34,7 @@ function Navbar() {
                       Rankings
                 </motion.div>
               </Link>
-              <Link to="/connnect">
+              <Link to="/connect">
                 <motion.div 
                     className="text-white hover:text-gray-100 pr-1 lg:pr-5 xl:pr-10"
                     whileHover={{ scale: 0.92 }}

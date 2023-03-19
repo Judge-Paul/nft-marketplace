@@ -17,7 +17,8 @@ export default function ConnectPage() {
                     Choose a wallet you want to connect. There are several wallet providers.
                 </p>
                 <motion.a 
-                    href="https://www.metamask.com"
+                    href="https://www.metamask.io"
+                    target="_blank"
                     whileHover={{ scale: 0.94 }}
                     className="flex border border-[#A259FF] bg-[#3B3B3B] rounded-3xl p-4 pl-7 xl:w-2/3"
                 >
@@ -26,6 +27,7 @@ export default function ConnectPage() {
                 </motion.a>
                 <motion.a 
                     href="https://www.coinbase.com"
+                    target="_blank"
                     whileHover={{ scale: 0.94 }}
                     className="flex border border-[#A259FF] bg-[#3B3B3B] rounded-3xl p-4 pl-7 xl:w-2/3 mt-4"
                 >
@@ -34,6 +36,7 @@ export default function ConnectPage() {
                 </motion.a>
                 <motion.a 
                     href="https://www.walletconnect.com"
+                    target="_blank"
                     whileHover={{ scale: 0.94 }}
                     className="flex border border-[#A259FF] bg-[#3B3B3B] rounded-3xl p-4 pl-7 xl:w-2/3 mt-4"
                 >
