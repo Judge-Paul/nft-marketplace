@@ -7,7 +7,7 @@ import Timer from "./Timer";
 export default function Highlighted() {
     return (
         <div className="bg-[#A259FF]">
-            <div className="bg-highlightedBg bg-cover bg-center opacity-70 text-white font-workSans py-6 sm:pt-80 pb-12 mb-20">
+            <div className="bg-highlightedBg bg-cover bg-center text-white opacity-75 font-workSans py-6 sm:pt-80 pb-12 mb-20">
                 <div className="flex flex-wrap justify-around">
                     <div className="mt-7">
                         <div className="flex bg-[#3B3B3B] w-max px-5 py-2 rounded-full">
