@@ -3,6 +3,7 @@ import Highlighted from "../assets/highlighted-nft.png"
 import Avatar from "../assets/artists-avatars/Animakid.png"
 import { motion } from "framer-motion";
 import { SlRocket } from "react-icons/sl"
+import { Link } from "react-router-dom";
 
 export default function Home() {
     return (
@@ -17,13 +18,15 @@ export default function Home() {
                     <p className="xl:pr-10 text-lg sm:text-[1.35rem] mt-5">
                         Nft Marketplace Ui Created With Anima For Figma. Collect, Buy And Sell Art From More Than 20k Nft Artists.
                     </p>
-                    <motion.button
-                    className="py-5 px-14 mt-10 text-white rounded-3xl font-semibold bg-[#A259FF] hidden md:flex"
-                    whileHover={{ scale: 0.92 }}
-                    >
-                        <SlRocket className="mr-2"/>
-                        Get Started
-                    </motion.button>
+                    <Link to="/register">
+                        <motion.button
+                        className="py-5 px-14 mt-10 text-white rounded-3xl font-semibold bg-[#A259FF] hidden md:flex"
+                        whileHover={{ scale: 0.92 }}
+                        >
+                            <SlRocket className="mr-2"/>
+                            Get Started
+                        </motion.button>
+                    </Link>
                 </div>
                 <motion.div 
                     animate={{
@@ -44,13 +47,15 @@ export default function Home() {
                         </div>
                     </div>
                 </motion.div>
-                <motion.button
-                    className="py-5 justify-center mt-10 text-white rounded-3xl font-semibold bg-[#A259FF] flex md:hidden w-2/3"
-                    whileHover={{ scale: 0.92 }}
-                    >
-                        <SlRocket className="mr-2"/>
-                        Get Started
+                <Link to="/register" className="w-full">
+                    <motion.button
+                        className="py-5 justify-center mt-10 text-white rounded-3xl font-semibold bg-[#A259FF] flex md:hidden w-full"
+                        whileHover={{ scale: 0.92 }}
+                        >
+                            <SlRocket className="mr-2"/>
+                            Get Started
                     </motion.button>
+                </Link>
                 <div className="mt-0">
                     <div className="flex place-items-left">
                     <div className="pr-10">
