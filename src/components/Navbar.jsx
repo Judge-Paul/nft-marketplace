@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <nav className="py-6">
+    <>
+      <nav className="py-6">
         <div className="px-2 sm:px-6 xl:px-20">
           <div className="flex justify-between">
             <div className="flex-shrink-0 flex items-center">
@@ -61,6 +62,33 @@ function Navbar() {
           </div> 
         </div>
       </nav>
+      {isOpen && <div className="block md:hidden relative bg-[#2B2B2B] h-screen w-screen text-center">
+        <Link to="/marketplace">
+          <motion.h4 className="w-full text-white font-semibold text-2xl mt-7" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
+            Marketplace 
+          </motion.h4>
+        </Link>
+        <Link to="/rankings">
+          <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
+            Rankings
+          </motion.h4>
+        </Link>
+        <Link to="/connect">
+          <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
+            Connect a wallet
+          </motion.h4>
+        </Link>
+        <Link to="/register">
+          <button 
+            className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 text-white mt-10 text-2xl font-semibold"
+            onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}
+          >
+            <AiOutlineUser size="30px" className="mr-2" />
+            Sign up
+          </button>
+        </Link>
+      </div>}
+    </>
   );
 }
 
