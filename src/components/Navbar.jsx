@@ -4,18 +4,19 @@ import { BiStoreAlt } from "react-icons/bi"
 import { AiOutlineUser } from "react-icons/ai"
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { MenuButton } from "../assets/MenuButton";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <nav className="py-6">
+      <nav className="hidden md:block py-6">
         <div className="px-2 sm:px-6 xl:px-20">
           <div className="flex justify-between">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="text-white font-semibold text-xl flex">
                   <BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
-                  <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" />
+                  <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
               </Link>
             </div>
             <div className="hidden md:block font-workSans font-bold">
@@ -56,38 +57,52 @@ function Navbar() {
 
               </div>
             </div>
-            <button onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)} className="block md:hidden">
-              Hello
-            </button>
           </div> 
         </div>
       </nav>
-      {isOpen && <div className="block md:hidden relative bg-[#2B2B2B] h-screen w-screen text-center">
-        <Link to="/marketplace">
-          <motion.h4 className="w-full text-white font-semibold text-2xl mt-7" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
-            Marketplace 
-          </motion.h4>
-        </Link>
-        <Link to="/rankings">
-          <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
-            Rankings
-          </motion.h4>
-        </Link>
-        <Link to="/connect">
-          <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
-            Connect a wallet
-          </motion.h4>
-        </Link>
-        <Link to="/register">
-          <button 
-            className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 text-white mt-10 text-2xl font-semibold"
-            onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}
-          >
-            <AiOutlineUser size="30px" className="mr-2" />
-            Sign up
+      <nav className={`block md:hidden ${isOpen && "fixed inset-0 z-50"}`} >
+        <div className="flex-shrink-0 flex items-center px-2 justify-between bg-[#2B2B2B] py-6">
+          <Link to="/" className="text-white font-semibold text-xl flex">
+              <BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
+              <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
+          </Link>
+          <button onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)} className="block md:hidden">
+            <MenuButton isOpen={isOpen} strokeWidth={5} width={30} color="#ffffff" />
           </button>
-        </Link>
-      </div>}
+        </div>
+        {isOpen && <motion.div 
+          initial={{ opacity: 0, transform: 'translateX(-100%)' }}
+          animate={{ opacity: 1, transform: 'translateX(0)' }}
+          transition={{ duration: 0.5 }}
+          className="text-center fixed inset-x-0 top-14 bottom-0 z-50 bg-[#2B2B2B]"
+        >
+          <Link to="/marketplace">
+            <motion.h4 
+              className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+              Marketplace 
+            </motion.h4>
+          </Link>
+          <Link to="/rankings">
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+              Rankings
+            </motion.h4>
+          </Link>
+          <Link to="/connect">
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+              Connect a wallet
+            </motion.h4>
+          </Link>
+          <Link to="/register">
+            <button 
+              className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 text-white mt-12 text-2xl font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
+              <AiOutlineUser size="30px" className="mr-2" />
+              Sign up
+            </button>
+          </Link>
+        </motion.div>}
+      </nav>
     </>
   );
 }
