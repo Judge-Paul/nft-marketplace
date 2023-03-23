@@ -67,7 +67,7 @@ function Navbar() {
               <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
           </Link>
           <button onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)} className="block md:hidden">
-            <MenuButton isOpen={isOpen} strokeWidth={5} width={30} color="#ffffff" />
+            <MenuButton isOpen={isOpen} strokeWidth={5} width={30} color="#ffffff" transition={{ duration: 0.5 }} />
           </button>
         </div>
         {isOpen && <motion.div 
