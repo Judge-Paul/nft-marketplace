@@ -61,20 +61,20 @@ function Navbar() {
         </div>
       </nav>
       <nav className={`block md:hidden ${isOpen && "fixed inset-0 z-50"}`} >
-        <div className="flex-shrink-0 flex items-center px-2 justify-between bg-[#2B2B2B] py-6">
+        <div className="flex-shrink-0 flex items-center px-4 justify-between bg-[#2B2B2B] py-6">
           <Link to="/" className="text-white font-semibold text-xl flex">
               <BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
               <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
           </Link>
           <button onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)} className="block md:hidden">
-            <MenuButton isOpen={isOpen} strokeWidth={5} width={30} color="#ffffff" transition={{ duration: 0.5 }} />
+            <MenuButton isOpen={isOpen} color="#ffffff" transition={{ duration: 0.5 }} />
           </button>
         </div>
         {isOpen && <motion.div 
           initial={{ opacity: 0, transform: 'translateX(-100%)' }}
           animate={{ opacity: 1, transform: 'translateX(0)' }}
           transition={{ duration: 0.5 }}
-          className="text-center fixed inset-x-0 top-14 bottom-0 z-50 bg-[#2B2B2B]"
+          className="text-center fixed inset-x-0 top-14 h-screen z-50 bg-[#2B2B2B]"
         >
           <Link to="/marketplace">
             <motion.h4 
