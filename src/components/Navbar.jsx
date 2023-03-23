@@ -60,8 +60,8 @@ function Navbar() {
           </div> 
         </div>
       </nav>
-      <nav className={`block md:hidden ${isOpen && "fixed inset-0 z-50"}`} >
-        <div className="flex-shrink-0 flex items-center px-4 justify-between bg-[#2B2B2B] py-6">
+      <nav className="block md:hidden sticky inset-0 z-50" >
+        <div className={`flex-shrink-0 flex items-center px-4 justify-between bg-[#2B2B2B] py-6 ${!isOpen && "bg-opacity-50"}`}>
           <Link to="/" className="text-white font-semibold text-xl flex">
               <BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
               <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
@@ -71,30 +71,30 @@ function Navbar() {
           </button>
         </div>
         {isOpen && <motion.div 
-          initial={{ opacity: 0, transform: 'translateX(-100%)' }}
-          animate={{ opacity: 1, transform: 'translateX(0)' }}
+          initial={{ opacity: 0, transform: 'translateY(-100%)' }}
+          animate={{ opacity: 1, transform: 'translateY(0)' }}
           transition={{ duration: 0.5 }}
-          className="text-center fixed inset-x-0 top-14 h-screen z-50 bg-[#2B2B2B]"
+          className="text-center fixed inset-x-0 top-14 z-50 bg-[#2B2B2B]"
         >
           <Link to="/marketplace">
             <motion.h4 
-              className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+              className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
               Marketplace 
             </motion.h4>
           </Link>
           <Link to="/rankings">
-            <motion.h4 className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
               Rankings
             </motion.h4>
           </Link>
           <Link to="/connect">
-            <motion.h4 className="w-full text-white font-semibold text-2xl mt-12" onClick={() => setIsOpen(false)}>
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
               Connect a wallet
             </motion.h4>
           </Link>
           <Link to="/register">
             <button 
-              className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 text-white mt-12 text-2xl font-semibold"
+              className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 mb-10 text-white mt-10 text-2xl font-semibold"
               onClick={() => setIsOpen(false)}
             >
               <AiOutlineUser size="30px" className="mr-2" />
