@@ -24,7 +24,7 @@ export default function Creators() {
                     View Rankings
                 </motion.button>
             </div>
-            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-7 mt-20 place-items-center lg:px-32">
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-7 mt-20 justify-items-center lg:px-32">
                 <CreatorCard position={1} avatar={Animakid} name={"Animakid"} sales={34.53} />
                 <CreatorCard position={2} avatar={Animakid} name={"Animakid"} sales={34.53} />
                 <CreatorCard position={3} avatar={Animakid} name={"Animakid"} sales={34.53} />
