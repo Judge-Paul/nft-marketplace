@@ -7,7 +7,7 @@ export default function NFTCard({image, title, artist, artistAvatar, price, high
         <Link to="/marketplace">
             <motion.div 
                 whileHover={{ scale: 0.92 }} 
-                className={`bg-[#3B3B3B] rounded-2xl ${className} w-80 mt-7`}
+                className={`rounded-2xl ${className} w-80 mt-7`}
             >
                 <img src={image} />
                 <div className="p-7">

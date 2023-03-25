@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import icon from "../assets/artists-avatars/Animakid.png"
-import { HiOutlineEye } from "react-icons/hi2"
-import NFT from "../assets/highlighted-nft.png"
+import icon from "../assets/artists-avatars/Animakid.png";
+import { HiOutlineEye } from "react-icons/hi2";
+import NFT from "../assets/highlighted-nft.png";
 import NFTCard from "./cards/NFTCard";
 
 export default function Discover() {
@@ -29,9 +29,9 @@ export default function Discover() {
                 </motion.button>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 justify-items-center lg:px-32">
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"md:hidden xl:block"} />
+                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
+                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
+                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B] md:hidden xl:block"} />
                 <motion.button
                     className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold mt-7"
                     whileHover={{ scale: 0.92 }}
