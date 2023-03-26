@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import icon from "../assets/artists-avatars/Animakid.png"
+import RankingsCard from "../components/cards/RankingsCard";
 
 export default function RankingsPage() {
     const [selected, setSelected] = useState("Today")
@@ -59,22 +60,14 @@ export default function RankingsPage() {
                     </div>
                     <p className="block md:hidden">Volume</p>
                 </div>
-                <div className="mt-5 w-full">
-                    <div className="flex rounded-2xl px-2 sm:px-8 py-2.5 border border-[#3B3B3B] bg-[#3B3B3B] font-spaceMono text-[#858584] text-sm md:text-md lg:text-lg">
-                        <div className="flex flex-1">
-                            <span className="bg-[#2B2B2B] rounded-full px-2.5 my-auto">1</span>
-                            <div className="ml-2 sm:ml-7 flex">
-                                <img src={icon} className="w-10 md:w-16" />
-                                <h4 className="my-auto ml-2 sm:ml-5 text-white text-xs xl:text-xl font-workSans font-medium sm:font-semibold truncate">Jaydon Ekstrom Bothman</h4>
-                            </div>
-                        </div>
-                        <div className="hidden md:flex flex-1 justify-between lg:pr-20 my-auto">
-                            <p className="text-[#00AC4F]">+1.41%</p>
-                            <p>602</p>
-                            <p>12.4 ETH</p>
-                        </div>
-                        <p className="block md:hidden my-auto text-xs">12.4 ETH</p>
-                    </div>
+                <div className="mt-5 mb-10 w-full">
+                    <RankingsCard position={1} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={2} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={3} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={4} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={5} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={6} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={7} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                 </div>
             </div>
         </div>
