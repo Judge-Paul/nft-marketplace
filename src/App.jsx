@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import MarketplacePage from "./pages/MarketplacePage";
 import ConnectPage from "./pages/ConnectPage";
 import RegisterPage from "./pages/RegisterPage";
+import RankingsPage from "./pages/RankingsPage";
 
 export default function App() {
   return(
@@ -15,6 +16,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
+            <Route path="/rankings" element={<RankingsPage />} />
             <Route path="/connect" element={<ConnectPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>

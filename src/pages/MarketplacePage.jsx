@@ -27,7 +27,7 @@ export default function MarketplacePage() {
                 </div>
             </div>
             <hr />
-            <div className="px-8 sm:px-32 grid grid-cols-2">
+            <div className="px-8 xl:px-32 grid grid-cols-2">
                 <button className="text-center sm:text-2xl font-semibold" onClick={() => setSelected("nfts")}>
                     <h4 className="py-6">
                         NFTs 
@@ -47,7 +47,7 @@ export default function MarketplacePage() {
                     {selected === "collections" && <hr />}
                 </button>
             </div>
-            <div className="bg-[#3B3B3B] px-8 lg:px-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-[#3B3B3B] px-8 lg:px-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center pb-10">
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
@@ -61,6 +61,8 @@ export default function MarketplacePage() {
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
             </div>
+            <hr />
+            <hr />
         </div>
     )
 }
