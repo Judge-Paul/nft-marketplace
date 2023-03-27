@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-function Timer() {
+function Timer({ bidButton, hour }) {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 24,
+    hours: hour,
     minutes: 0,
     seconds: 0,
   });
@@ -39,9 +40,9 @@ function Timer() {
   }, [timeLeft]);
 
   return (
-    <div className="bg-[#3B3B3B] p-6 rounded-2xl opacity-75">
+    <div className="w-full bg-[#3B3B3B] p-6 rounded-2xl">
         <p className="mb-3">Auction ends in:</p>
-        <h1 className="text-5xl font-bold flex">
+        <div className={`text-4xl font-bold flex justify-center lg:`}>
             <div className="pr-4">
                 {timeLeft.hours.toString().padStart(2, "0")}{" "}:
                 <p className="text-sm font-light">Hours</p>
@@ -54,7 +55,13 @@ function Timer() {
                 {timeLeft.seconds.toString().padStart(2, "0")}
                 <p className="text-sm font-light">Seconds</p>
             </div>
-        </h1>
+        </div>
+        {bidButton && <motion.button 
+          className="mt-7 w-full py-4 bg-[#A259FF] rounded-2xl font-semibold"
+          whileHover={{ scale: 0.92 }}
+          >
+          Place Bid
+        </motion.button>}
     </div>
   );
 }

@@ -26,7 +26,7 @@ export default function Highlighted() {
                         </motion.button>
                     </div>
                     <div className="mt-7 md:mt-auto order-1 md:order-2">
-                        <Timer />
+                        <Timer hour={24} />
                     </div>
                 </div>
             </div>
