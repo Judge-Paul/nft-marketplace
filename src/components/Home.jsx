@@ -34,7 +34,7 @@ export default function Home() {
                         rotateY: [-35, 0, 35, 0, -35],
                         transition: { duration: 8, repeat: Infinity }
                     }}
-                    className="w-88 lg:mx-14 backface-hidden shadow-xl"
+                    className="w-72 lg:w-96 lg:mx-14 backface-hidden shadow-xl"
                 >
                     <div className="p-4 bg-[#404040] rounded-lg">
                         <img src={Highlighted} alt="Highlighted NFT" />
@@ -56,7 +56,7 @@ export default function Home() {
                             Get Started
                     </motion.button>
                 </Link>
-                <div className="mt-0">
+                <div className="mt-0 mx-auto">
                     <div className="flex place-items-left">
                     <div className="pr-10">
                         <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">240k+</h4>

@@ -7,6 +7,7 @@ import MarketplacePage from "./pages/MarketplacePage";
 import ConnectPage from "./pages/ConnectPage";
 import RegisterPage from "./pages/RegisterPage";
 import RankingsPage from "./pages/RankingsPage";
+import ArtistPage from "./pages/ArtistPage";
 
 export default function App() {
   return(
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/rankings" element={<RankingsPage />} />
             <Route path="/connect" element={<ConnectPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/artist" element={<ArtistPage />} />
           </Routes>
         <Footer />
       </BrowserRouter>
