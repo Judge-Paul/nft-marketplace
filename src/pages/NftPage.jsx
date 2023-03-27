@@ -71,12 +71,12 @@ export default function NftPage() {
                     </div>
                 </div>
             </div>
-            <div className="px-6 lg:px-32">
-                <div className="flex justify-between mt-20">
+            <div>
+                <div className="flex justify-between mt-20 px-6 sm:px-32">
                     <h4 className="text-2xl lg:text-[2.3rem] font-semibold">More From This Artist</h4>
                     <Link to="/artist">
                         <motion.button 
-                            className="hidden sm:flex border-2 border-[#A259FF] rounded-2xl py-4 px-10 font-semibold"
+                            className="hidden md:flex border-2 border-[#A259FF] rounded-2xl py-4 px-10 font-semibold"
                             whileHover={{ scale: 0.92 }}    
                         >
                             <AiOutlineArrowRight className="my-auto text-[#A259FF] mr-2" />
@@ -84,7 +84,7 @@ export default function NftPage() {
                         </motion.button>
                     </Link>
                 </div>
-                <div className="grid md:grid-cols-2 xl:grid-cols-3 justify-items-center">
+                <div className="mb-20 lg:px-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center">
                     <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
                     <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
                     <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
