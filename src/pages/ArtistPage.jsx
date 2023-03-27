@@ -94,7 +94,7 @@ export default function ArtistPage() {
                             <button className="text-center sm:text-xl font-semibold" onClick={() => setSelected(category.name)}>
                                 <h4 className="py-4">
                                     {category.name}
-                                    <span className="font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
+                                    <span className="hidden md:inline font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
                                         {category.amount}
                                     </span>
                                 </h4>
@@ -103,7 +103,7 @@ export default function ArtistPage() {
                             )
                         })}
                     </div>
-                    <div className="bg-[#3B3B3B] -mx-8 sm:-mx-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center px-8 sm:px-32 pt-12 pb-10 border-b-[2px] border-black">
+                    <div className="bg-[#3B3B3B] -mx-8 sm:-mx-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center px-8 lg:px-32 pt-12 pb-10 border-b-[2px] border-black">
                         <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                         <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                         <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
