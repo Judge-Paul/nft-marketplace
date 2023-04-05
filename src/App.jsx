@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import MarketplacePage from "./pages/MarketplacePage";
 import ConnectPage from "./pages/ConnectPage";
 import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 import RankingsPage from "./pages/RankingsPage";
 import ArtistPage from "./pages/ArtistPage";
 import NftPage from "./pages/NftPage";
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/artist" element={<ArtistPage />} />
             <Route path="/nft" element={<NftPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         <Footer />
       </BrowserRouter>
