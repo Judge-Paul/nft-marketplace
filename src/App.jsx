@@ -34,9 +34,10 @@ export default function App() {
             <Route path="/rankings" element={<RankingsPage />} />
             <Route path="/connect" element={<ConnectPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/artist" element={<ArtistPage />} />
             <Route path="/nft" element={<NftPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="*" element={<>404 Not Found</>} />
           </Routes>
         <Footer />
       </BrowserRouter>
