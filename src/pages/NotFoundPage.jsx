@@ -14,13 +14,13 @@ export default function NotFoundPage() {
           <p className="text-lg font-medium text-gray-200 mb-2">What can you do?</p>
           <ul className="text-left text-white">
             <li className="mb-2">
-              <span className="text-blue-400 font-medium">Double-check the URL</span> – make sure the address you're trying to reach is correct.
+              <span className="text-[#A259FF] font-medium">Double-check the URL</span> – make sure the address you're trying to reach is correct.
             </li>
             <li className="mb-2">
-              <span className="text-blue-400 font-medium">Go back to the homepage</span> – start over and explore more of our site.
+              <span className="text-[#A259FF] font-medium">Go back to the homepage</span> – start over and explore more of our site.
             </li>
             <li className="mb-2">
-              <span className="text-blue-400 font-medium">Contact us</span> – if you think something is broken, let us know and we'll do our best to fix it.
+              <span className="text-[#A259FF] font-medium">Contact us</span> – if you think something is broken, let us know and we'll do our best to fix it.
             </li>
           </ul>
         </div>
@@ -30,13 +30,13 @@ export default function NotFoundPage() {
           <Link to="/">
             <motion.div 
                 whileHover={{ scale: 0.92 }}
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#A259FF] hover:bg-purple-600 md:py-4 md:text-lg md:px-10">
                     Go back to homepage
             </motion.div>
           </Link>
         </div>
         <motion.div whileHover={{ scale:0.92 }} className="mt-3 sm:mt-0 sm:ml-3">
-          <a href="mailto:nftmarketplace@hotmail.com" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-gray-200 hover:bg-gray-300 md:py-4 md:text-lg md:px-10">
+          <a href="mailto:nftmarketplace@hotmail.com" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#A259FF] bg-gray-200 hover:bg-gray-300 md:py-4 md:text-lg md:px-10">
             Contact us
           </a>
         </motion.div>
