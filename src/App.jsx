@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import RankingsPage from "./pages/RankingsPage";
 import ArtistPage from "./pages/ArtistPage";
 import NftPage from "./pages/NftPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   function ScrollToTop() {
@@ -24,7 +25,7 @@ export default function App() {
   }
 
   return(
-    <div className="bg-[#2B2B2B]">
+    <div className="bg-[#2B2B2B] scrollbar-hide">
       <BrowserRouter>
         <Navbar />
         <ScrollToTop />
@@ -37,7 +38,7 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/artist" element={<ArtistPage />} />
             <Route path="/nft" element={<NftPage />} />
-            <Route path="*" element={<>404 Not Found</>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         <Footer />
       </BrowserRouter>
