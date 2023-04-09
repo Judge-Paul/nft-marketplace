@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import NFTCard from "../components/cards/NFTCard";
 import icon from "../assets/artists-avatars/Animakid.png";
 import NFT from "../assets/highlighted-nft.png";
 
 export default function MarketplacePage() {
+    useEffect(() => {
+        fetch('http://localhost:3000/market')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => console.error(error));
+    }, [])
+
     const [selected, setSelected] = useState("")
     return (
         <div className="text-white mt-10 lg:mt-20 font-workSans">

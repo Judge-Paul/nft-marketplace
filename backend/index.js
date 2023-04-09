@@ -4,69 +4,33 @@ const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
-const MORALIS_API_KEY = "3zEgIUavUjbTOyg0aImBIb3Bzp9YeaRg9wkCMkuGvhwrrFuwAYQdLjRuL4TCIEB8";
-const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
-const chain = EvmChain.ETHEREUM;
-
-async function getDemoData() {
-  // Get native balance
-  const nativeBalance = await Moralis.EvmApi.balance.getNativeBalance({
-    address,
-    chain,
-  });
-
-  // Format the native balance formatted in ether via the .ether getter
-  const native = nativeBalance.result.balance.ether;
-
-  // Get token balances
-  const tokenBalances = await Moralis.EvmApi.token.getWalletTokenBalances({
-    address,
-    chain,
-  });
-
-  // Format the balances to a readable output with the .display() method
-  const tokens = tokenBalances.result.map((token) => token.display());
-
-  // Get the nfts
-  const nftsBalances = await Moralis.EvmApi.nft.getNFTs({
-    address,
-    chain,
-    limit: 10,
-  });
-  console.log(nftsBalances)
-  // Format the output to return name, amount and metadata
-  const nfts = nftsBalances.result.map((nft) => ({
-    name: nft.result.name,
-    amount: nft.result.amount,
-    metadata: nft.result.metadata,
-  }));
-
-  return { native, tokens, nfts };
+let Data = null
+async function getNFTData() {
+    await Moralis.start({
+        apiKey: "3zEgIUavUjbTOyg0aImBIb3Bzp9YeaRg9wkCMkuGvhwrrFuwAYQdLjRuL4TCIEB8",
+        // ...and any other configuration
+      });
+    
+    //   const address = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB";
+      const address = "0x32973908faee0bf825a343000fe412ebe56f802a";
+    
+      const chain = EvmChain.ETHEREUM;
+    
+      const response = await Moralis.EvmApi.nft.getContractNFTs({
+        address,
+        chain,
+      });
+      Data = await response
 }
-
-app.get("/nfts", async (req, res) => {
-  try {
-    // Get and return the crypto data
-    const data = await getDemoData();
-    res.status(200);
-    res.json(data);
-  } catch (error) {
-    // Handle errors
-    console.error(error);
-    res.status(500);
-    res.json({ error: error.message });
-  }
-});
-
-const startServer = async () => {
-  await Moralis.start({
-    apiKey: MORALIS_API_KEY,
-  });
-
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-  });
-};
-
-startServer();
+getNFTData()
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
+app.get("/market", async (req, res) => {
+    res.send(Data.result)
+})
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+})
