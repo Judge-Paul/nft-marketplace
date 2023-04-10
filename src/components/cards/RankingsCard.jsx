@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 export default function RankingsCard({position, icon, artist, change, sales, volume}) {
     return (
         <Link>
-            <div className="flex mt-5 rounded-2xl px-4 sm:px-8 py-2.5 border border-[#3B3B3B] bg-[#3B3B3B] font-spaceMono text-white text-sm md:text-md lg:text-lg">
+            <div className="flex mt-5 rounded-2xl px-4 sm:px-8 py-2.5 border border-[#3B3B3B] bg-[#3B3B3B] font-spaceMono text-white text-md md:text-md lg:text-lg">
                 <div className="flex flex-1">
                     <span className="bg-[#2B2B2B] rounded-full px-2.5 my-auto">{position}</span>
-                    <motion.div whileHover={{ scale: 0.95 }} className="ml-2 sm:ml-7 flex">
+                    <motion.div whileHover={{ scale: 0.95 }} className="ml-3 sm:ml-7 flex">
                         <img src={icon} className="w-9 md:w-16" />
-                        <h4 className="my-auto ml-2 sm:ml-5 text-xs xl:text-xl font-workSans font-medium sm:font-semibold truncate">{artist}</h4>
+                        <h4 className="my-auto ml-2 sm:ml-5 text-md xl:text-xl font-workSans font-medium sm:font-semibold w-28 sm:w-52 xl:w-80 truncate">{artist}</h4>
                     </motion.div>
                 </div>
                 <div className="hidden md:flex flex-1 justify-between lg:pr-20 my-auto">

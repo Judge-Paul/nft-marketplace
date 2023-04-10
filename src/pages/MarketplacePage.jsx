@@ -3,18 +3,19 @@ import { FaSearch } from "react-icons/fa";
 import NFTCard from "../components/cards/NFTCard";
 import icon from "../assets/artists-avatars/Animakid.png";
 import NFT from "../assets/highlighted-nft.png";
+import CollectionCard from "../components/cards/CollectionCard";
 
 export default function MarketplacePage() {
+    const [NFTData, setNFTData] = useState([])
+    const [collectionData, setCollectionData] = useState([])
+    const [selected, setSelected] = useState("nfts")
     useEffect(() => {
-        fetch('http://localhost:3000/market')
+        fetch('http://localhost:3000/collections')
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
+            .then(data => setCollectionData(data.collections))
             .catch(error => console.error(error));
-    }, [])
-
-    const [selected, setSelected] = useState("")
+    },[])
+    console.log(collectionData)
     return (
         <div className="text-white mt-10 lg:mt-20 font-workSans">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">
@@ -50,13 +51,30 @@ export default function MarketplacePage() {
                     <h4 className="py-6">
                         Collections 
                         <span className="font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
-                            67
+                            {collectionData.length}
                         </span>
                     </h4>
                     {selected === "collections" && <hr />}
                 </button>
             </div>
             <div className="bg-[#3B3B3B] px-8 lg:px-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center pb-10">
+                {
+                    selected === "nfts" ? <>Hello</> : 
+                    collectionData.map(collection => {
+                        return (
+                            <CollectionCard 
+                                key={collection.id}
+                                img1={collection.sampleImages[0]}
+                                img2={collection.sampleImages[1]}
+                                img3={collection.sampleImages[2]}
+                                total={collection.onSaleCount}
+                                artist={collection.slug}
+                                title={collection.name}
+                                avatar={collection.image}
+                            />)
+                    })
+                }
+                {/* <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
@@ -67,8 +85,7 @@ export default function MarketplacePage() {
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
+                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} /> */}
             </div>
             <hr />
             <hr />

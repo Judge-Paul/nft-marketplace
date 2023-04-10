@@ -1,7 +1,7 @@
 import React from "react";
 import NFT from "../assets/highlighted-nft.png"
 import Animakid from "../assets/artists-avatars/Animakid.png"
-import TrendingCard from "./cards/TrendingCard";
+import CollectionCard from "./cards/CollectionCard";
 
 export default function Trending() {
     return (
@@ -13,9 +13,9 @@ export default function Trending() {
                 Checkout Our Weekly Updated Trending Collection.
             </p>
             <div className="flex justify-center gap-7 place-center">
-                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} />
-                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden lg:block"} />
-                <TrendingCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden xl:block"} />
+                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} />
+                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden lg:block"} />
+                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden xl:block"} />
             </div>
         </div>
     )

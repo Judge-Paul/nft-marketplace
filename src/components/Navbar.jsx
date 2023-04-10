@@ -12,7 +12,7 @@ function Navbar() {
     <>
       <nav className="hidden md:block">
         <marquee className="py-4 text-white border-b border-t border-gray-500">This site is a sample site. Real NFTs can't be bought or sold here. Real Creators can't sell NFTs here. And the NFT data is gotten from Rarible's api.</marquee>
-        <div className="px-2 sm:px-6 xl:px-20">
+        <div className="px-2 py-4 sm:px-6 xl:px-20">
           <div className="flex justify-between">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="text-white font-semibold text-xl flex">

@@ -1,35 +1,28 @@
 const express = require("express");
-const Moralis = require("moralis").default;
-const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
 const app = express();
 const port = 3000;
 const cors = require('cors');
 
-let Data = null
-async function getNFTData() {
-    await Moralis.start({
-        apiKey: "3zEgIUavUjbTOyg0aImBIb3Bzp9YeaRg9wkCMkuGvhwrrFuwAYQdLjRuL4TCIEB8",
-        // ...and any other configuration
-      });
-    
-    //   const address = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB";
-      const address = "0x32973908faee0bf825a343000fe412ebe56f802a";
-    
-      const chain = EvmChain.ETHEREUM;
-    
-      const response = await Moralis.EvmApi.nft.getContractNFTs({
-        address,
-        chain,
-      });
-      Data = await response
+let collections = null
+async function getCollectionsData() {
+    const sdk = require('api')('@reservoirprotocol/v3.0#2sq1jdslllg6zxko6');
+
+    sdk.auth('bdda386d-33f0-56a7-8e34-4b41089e03e9');
+    sdk.getCollectionsV5({accept: '*/*'})
+        .then(({ data }) => collections = data)
+        .catch(err => console.error(err));
 }
-getNFTData()
+getCollectionsData()
+
 app.use(cors({
     origin: "http://localhost:5173"
 }));
-app.get("/market", async (req, res) => {
-    res.send(Data.result)
+app.get("/collections", async (req, res) => {
+    res.send(collections)
+})
+app.get("/price", async (req, res) => {
+    
 })
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
