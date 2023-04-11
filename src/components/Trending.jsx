@@ -1,21 +1,43 @@
-import React from "react";
-import NFT from "../assets/highlighted-nft.png"
-import Animakid from "../assets/artists-avatars/Animakid.png"
+import React, { useState, useEffect } from "react";
 import CollectionCard from "./cards/CollectionCard";
 
 export default function Trending() {
+    const [collectionsData, setCollectionsData] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:3000/collections')
+            .then(response => response.json())
+            .then(data => setCollectionsData(data.collections))
+            .catch(error => console.error(error));
+    },[])
+    
     return (
         <div className="mt-20 mb-20 lg:mb-36 font-workSans px-8 sm:px-32 text-white">
             <h4 className="text-3xl md:text-[2.5rem] font-bold">
                 Trending Collection
             </h4>
-            <p className="text-lg sm:text-[1.35rem] mt-5 font-medium mb-20">
+            <p className="text-lg sm:text-[1.35rem] mt-5 font-medium">
                 Checkout Our Weekly Updated Trending Collection.
             </p>
-            <div className="flex justify-center gap-7 place-center">
-                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} />
-                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden lg:block"} />
-                <CollectionCard img1={NFT} img2={NFT} img3={NFT} total={"1025+"} artist={"MrFox"} avatar={Animakid} title={"Dsgn Animals"} className={"hidden xl:block"} />
+            <div className="flex flex-wrap justify-center gap-7 place-center">
+                {collectionsData.map((collection, index) => {
+                    if (index < 3) {
+                        let className
+                        index === 2 ? className="lg:hidden xl:block" : ""
+                        return (
+                            <CollectionCard 
+                                key={collection.id}
+                                id={collection.id}
+                                img1={collection.sampleImages[0]}
+                                img2={collection.sampleImages[1]}
+                                img3={collection.sampleImages[2]}
+                                total={collection.onSaleCount}
+                                artist={collection.slug}
+                                title={collection.name}
+                                avatar={collection.image}
+                                className={className}
+                            />)
+                    }
+                })}
             </div>
         </div>
     )

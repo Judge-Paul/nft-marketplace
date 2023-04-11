@@ -13,9 +13,7 @@ export default function NFTCard({id, image, title, artist, artistAvatar, price, 
                 <div className="p-7">
                     <h4 className="text-2xl font-medium truncate">{title}</h4>
                     <div className="flex mb-3 mt-1">
-                        <Link to="/artist">
                             <img src={artistAvatar} width="40px" className="h-[40px] rounded-full" />
-                        </Link>
                         <p className="pl-2 my-auto truncate">{artist}</p>
                     </div>
                     <div className="flex justify-between">
