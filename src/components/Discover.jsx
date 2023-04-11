@@ -20,25 +20,29 @@ export default function Discover() {
                         Explore New Trending Nfts
                     </p>
                 </div>
-                <motion.button
-                    className="hidden md:flex bg-transparent border-2 border-[#A259FF] text-xs xl:text-lg ml-auto h-full px-14 py-4 rounded-2xl font-semibold"
-                    whileHover={{ scale: 0.92 }}
-                >
-                    <HiOutlineEye className="mr-2 lg:text-lg text-[#A259FF] my-auto" size="20px" />
-                    See All
-                </motion.button>
+                <Link to="/marketplace">
+                    <motion.button
+                        className="hidden md:flex bg-transparent border-2 border-[#A259FF] text-xs xl:text-lg ml-auto px-14 py-4 rounded-2xl font-semibold"
+                        whileHover={{ scale: 0.92 }}
+                    >
+                        <HiOutlineEye className="mr-2 lg:text-lg text-[#A259FF] my-auto" size="20px" />
+                        See All
+                    </motion.button>
+                </Link>
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 justify-items-center lg:px-32">
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B] md:hidden xl:block"} />
-                <motion.button
-                    className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold mt-7"
-                    whileHover={{ scale: 0.92 }}
-                >
-                    <HiOutlineEye className="mr-2 lg:text-lg text-[#A259FF] my-auto" size="20px" />
-                    See All
-                </motion.button>
+                <Link to="/marketplace">
+                    <motion.button
+                        className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold mt-7"
+                        whileHover={{ scale: 0.92 }}
+                    >
+                        <HiOutlineEye className="mr-2 lg:text-lg text-[#A259FF] my-auto" size="20px" />
+                        See All
+                    </motion.button>
+                </Link>
             </div>
         </div>
     )

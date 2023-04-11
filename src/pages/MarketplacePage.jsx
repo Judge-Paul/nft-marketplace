@@ -6,16 +6,21 @@ import NFT from "../assets/highlighted-nft.png";
 import CollectionCard from "../components/cards/CollectionCard";
 
 export default function MarketplacePage() {
-    const [NFTData, setNFTData] = useState([])
-    const [collectionData, setCollectionData] = useState([])
+    const [NFTsData, setNFTsData] = useState([])
+    const [collectionsData, setCollectionsData] = useState([])
     const [selected, setSelected] = useState("nfts")
     useEffect(() => {
+        fetch('http://localhost:3000/tokens')
+            .then(response => response.json())
+            .then(data => setNFTsData(data.tokens))
+            // .then(data => console.log(data.tokens))
+            .catch(error => console.error(error))
         fetch('http://localhost:3000/collections')
             .then(response => response.json())
-            .then(data => setCollectionData(data.collections))
+            .then(data => setCollectionsData(data.collections))
             .catch(error => console.error(error));
     },[])
-    console.log(collectionData)
+    console.log(NFTsData)
     return (
         <div className="text-white mt-10 lg:mt-20 font-workSans">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">
@@ -42,7 +47,7 @@ export default function MarketplacePage() {
                     <h4 className="py-6">
                         NFTs 
                         <span className="font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
-                            302
+                            {NFTsData.length}
                         </span>
                     </h4>
                     {selected === "nfts" && <hr />}
@@ -51,19 +56,41 @@ export default function MarketplacePage() {
                     <h4 className="py-6">
                         Collections 
                         <span className="font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
-                            {collectionData.length}
+                            {collectionsData.length}
                         </span>
                     </h4>
                     {selected === "collections" && <hr />}
                 </button>
             </div>
             <div className="bg-[#3B3B3B] px-8 lg:px-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center pb-10">
-                {
-                    selected === "nfts" ? <>Hello</> : 
-                    collectionData.map(collection => {
+                    {selected === "nfts" && NFTsData.length === 0 ?
+                        (<div className="col-span-3 mt-5">
+                            Getting NFt Tokens failed try reloading the site.
+                        </div>) : 
+                        selected === "nfts" && 
+                    NFTsData.map(nft => {
+                        return (
+                            <NFTCard 
+                                key={nft.token.tokenId}
+                                id={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                image={nft.token.image}
+                                title={nft.token.name}
+                                artist={nft.token.collection.slug}
+                                artistAvatar={nft.token.collection.image?nft.token.collection.image:nft.token.collection.imageUrl}
+                                className={"bg-[#2B2B2B]"}
+                                price={nft.market.floorAsk.price.amount.decimal}
+                                highestBid={(Math.random() * 10).toFixed(2)}
+                        />)
+                    })}
+                    {collectionsData.length === 0 ?
+                    (<div className="col-span-3 mt-5">
+                        Getting NFt Collections failed try reloading the site.
+                    </div>) : 
+                    selected === "collections" && collectionsData.map(collection => {
                         return (
                             <CollectionCard 
                                 key={collection.id}
+                                id={collection.id}
                                 img1={collection.sampleImages[0]}
                                 img2={collection.sampleImages[1]}
                                 img3={collection.sampleImages[2]}
@@ -72,8 +99,7 @@ export default function MarketplacePage() {
                                 title={collection.name}
                                 avatar={collection.image}
                             />)
-                    })
-                }
+                    })}
                 {/* <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
                 <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#2B2B2B]"} />
