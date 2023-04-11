@@ -1,9 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import icon from "../assets/artists-avatars/Animakid.png"
 import RankingsCard from "../components/cards/RankingsCard";
 
 export default function RankingsPage() {
     const [selected, setSelected] = useState("Today")
+    const [rankingsOneDay, setRankingsOneDay] = useState([])
+    const [rankingsSevenDays, setRankingsSevenDays] = useState([])
+    const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
+    const [rankingsAllTime, setRankingsAllTime] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:3000/collections-one-day')
+            .then(response => response.json())
+            .then(data => setRankingsOneDay(data.collections))
+            .catch(error => console.error(error));
+        fetch('http://localhost:3000/collections-seven-days')
+            .then(response => response.json())
+            .then(data => setRankingsSevenDays(data.collections))
+            .catch(error => console.error(error));
+        fetch('http://localhost:3000/collections-thirty-days')
+            .then(response => response.json())
+            .then(data => setRankingsThirtyDays(data.collections))
+            .catch(error => console.error(error));
+        fetch('http://localhost:3000/collections')
+            .then(response => response.json())
+            .then(data => setRankingsAllTime(data.collections))
+            .catch(error => console.error(error));
+    },[])
+
     return (
         <div className="font-workSans text-white mt-10 lg:mt-20">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">
@@ -55,19 +78,71 @@ export default function RankingsPage() {
                     </div>
                     <div className="hidden md:flex flex-1 justify-between lg:pr-20">
                         <p>Change</p>
-                        <p>NFTs Sold</p>
+                        <p>Floor Price</p>
                         <p>Volume</p>
                     </div>
                     <p className="block md:hidden">Volume</p>
                 </div>
                 <div className="mt-5 mb-10 w-full">
-                    <RankingsCard position={1} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                {selected === "Today" && rankingsOneDay.map((collection, index) => {
+                    return (
+                      <RankingsCard 
+                          key={collection.id}
+                          id={collection.id}
+                          position={index + 1}
+                          artist={collection.name}
+                          icon={collection.image?collection.image:collection.sampleImages[0]}
+                          sales={collection.floorAsk.price?collection.floorAsk.price.amount.decimal:(Math.random() * 20).toFixed(2) }
+                          volume={collection.volume["1day"]}
+                          change={collection.volumeChange["1day"]}
+                    />)
+                })}
+                {selected === "This Week" && rankingsSevenDays.map((collection, index) => {
+                    return (
+                      <RankingsCard 
+                          key={collection.id}
+                          id={collection.id}
+                          position={index + 1}
+                          artist={collection.name}
+                          icon={collection.image?collection.image:collection.sampleImages[0]}
+                          sales={Math.floor(Math.random() * 999) + 1}
+                          volume={collection.volume["7day"]}
+                          change={collection.volumeChange["7day"]}
+                    />)
+                })}
+                {selected === "This Month" && rankingsThirtyDays.map((collection, index) => {
+                    return (
+                      <RankingsCard 
+                          key={collection.id}
+                          id={collection.id}
+                          position={index + 1}
+                          artist={collection.name}
+                          icon={collection.image?collection.image:collection.sampleImages[0]}
+                          sales={Math.floor(Math.random() * 999) + 1}
+                          volume={collection.volume["30day"]}
+                          change={collection.volumeChange["30day"]}
+                    />)
+                })}
+                {selected === "All Time" && rankingsAllTime.map((collection, index) => {
+                    return (
+                      <RankingsCard 
+                          key={collection.id}
+                          id={collection.id}
+                          position={index + 1}
+                          artist={collection.name}
+                          icon={collection.image?collection.image:collection.sampleImages[0]}
+                          sales={Math.floor(Math.random() * 999) + 1}
+                          volume={collection.volume["allTime"]}
+                          change={collection.volumeChange["30day"]}
+                    />)
+                })}
+                    {/* <RankingsCard position={1} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                     <RankingsCard position={2} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                     <RankingsCard position={3} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                     <RankingsCard position={4} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                     <RankingsCard position={5} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
                     <RankingsCard position={6} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={7} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
+                    <RankingsCard position={7} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} /> */}
                 </div>
             </div>
         </div>

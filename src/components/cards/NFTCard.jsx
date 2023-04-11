@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function NFTCard({id, image, title, artist, artistAvatar, price, highestBid, className }) {
+export default function NFTCard({id, image, title, artist, artistAvatar, price, className }) {
     return (
         <Link to={`/nft/${id}`}>
             <motion.div 

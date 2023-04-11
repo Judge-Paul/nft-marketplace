@@ -22,7 +22,7 @@ export default function Trending() {
                 {collectionsData.map((collection, index) => {
                     if (index < 3) {
                         let className
-                        index === 2 ? className="lg:hidden xl:block" : ""
+                        index === 2 ? className="md:hidden xl:block" : ""
                         return (
                             <CollectionCard 
                                 key={collection.id}

@@ -1,47 +1,80 @@
 const express = require("express");
+const cors = require('cors');
+const api = require('api')('@reservoirprotocol/v3.0#2sq1jdslllg6zxko6');
 
 const app = express();
 const port = 3000;
-const cors = require('cors');
 
-let collections = null
-let tokens = null
+let collections = null;
+let collectionsOneDay = null;
+let collectionsSevenDays = null;
+let collectionsThirtyDays = null;
+let tokens = null;
+
+async function getOrderedData(sortBy) {
+  try {
+    const { data } = await api.getCollectionsV5({ sortBy, accept: '*/*' });
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
 async function getCollectionsData() {
-    const sdk = require('api')('@reservoirprotocol/v3.0#2sq1jdslllg6zxko6');
-
-    sdk.auth('bdda386d-33f0-56a7-8e34-4b41089e03e9')
-    sdk.getCollectionsV5({accept: '*/*'})
-        .then(({ data }) => collections = data)
-        .catch(err => console.error(err))
+  try {
+    const { data } = await api.getCollectionsV5({ accept: '*/*' });
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
 }
 
-async function getTokensData() {
-    const sdk = require('api')('@reservoirprotocol/v3.0#2sq1jdslllg6zxko6');
-
-    sdk.auth('bdda386d-33f0-56a7-8e34-4b41089e03e9');
-    sdk.getTokensV6({
-      collection: '0xed5af388653567af2f388e6224dc7c4b3241c544',
-      limit: '100',
-      accept: '*/*'
-    })
-        .then(({ data }) => tokens = data)
-        .catch(err => console.error(err));
+async function getTokensData(collection, limit) {
+  try {
+    const { data } = await api.getTokensV6({ collection, limit, accept: '*/*' });
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
 }
-getCollectionsData()
-getTokensData()
+
+async function getData() {
+  collectionsOneDay = await getOrderedData('1DayVolume');
+  collectionsSevenDays = await getOrderedData('7DayVolume');
+  collectionsThirtyDays = await getOrderedData('30DayVolume');
+  collections = await getCollectionsData();
+  tokens = await getTokensData('0xed5af388653567af2f388e6224dc7c4b3241c544', '100');
+}
+
+getData();
 
 app.use(cors({
-    origin: "http://localhost:5173"
+  origin: "http://localhost:5173"
 }));
+
+app.get("/collections-one-day", async (req, res) => {
+  res.send(collectionsOneDay);
+});
+
+app.get("/collections-seven-days", async (req, res) => {
+  res.send(collectionsSevenDays);
+});
+
+app.get("/collections-thirty-days", async (req, res) => {
+  res.send(collectionsThirtyDays);
+});
+
 app.get("/collections", async (req, res) => {
-    res.send(collections)
-})
-app.get("/tokens", async(req, res) => {
-    res.send(tokens)
-})
-app.get("/price", async (req, res) => {
-    
-})
+  res.send(collections);
+});
+
+app.get("/tokens", async (req, res) => {
+  res.send(tokens);
+});
+
 app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-})
+  console.log(`Server listening at http://localhost:${port}`);
+});

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import icon from "../assets/artists-avatars/Animakid.png";
@@ -7,6 +7,13 @@ import NFT from "../assets/highlighted-nft.png";
 import NFTCard from "./cards/NFTCard";
 
 export default function Discover() {
+    const [NFTsData, setNFTsData] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:3000/tokens')
+            .then(response => response.json())
+            .then(data => setNFTsData(data.tokens))
+            .catch(error => console.error(error))
+    },[])
     return (
         <div
             className="mt-20 mb-20 lg:mb-36 font-workSans text-white"
@@ -30,10 +37,25 @@ export default function Discover() {
                     </motion.button>
                 </Link>
             </div>
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 justify-items-center lg:px-32">
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B]"} />
-                <NFTCard title="Distant Galaxy" artist="MoonDancer" artistAvatar={icon} price={1.63} highestBid={0.33} image={NFT} className={"bg-[#3B3B3B] md:hidden xl:block"} />
+            <div className="flex flex-wrap justify-center gap-7 place-center">
+                {NFTsData.map((nft, index) => {
+                    if (index < 3) {
+                        let className
+                        className=index === 1 ?"sm:hidden xl:block bg-[#3B3B3B]" : "bg-[#3B3B3B]"
+                        return (
+                            <NFTCard 
+                                key={nft.token.tokenId}
+                                id={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                image={nft.token.image}
+                                title={nft.token.name}
+                                artist={nft.token.collection.slug}
+                                artistAvatar={nft.token.collection.image?nft.token.collection.image:nft.token.collection.imageUrl}
+                                className={className}
+                                price={nft.market.floorAsk.price.amount.decimal}
+                                highestBid={(Math.random() * 10).toFixed(2)}
+                        />)
+                    }
+                })}
                 <Link to="/marketplace">
                     <motion.button
                         className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold mt-7"

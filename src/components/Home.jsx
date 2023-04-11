@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Highlighted from "../assets/highlighted-nft.png"
 import Avatar from "../assets/artists-avatars/Animakid.png"
 import { motion } from "framer-motion";
 import { SlRocket } from "react-icons/sl"
 import { Link } from "react-router-dom";
+import NFTCard from "./cards/NFTCard";
+import icon from "../assets/artists-avatars/Animakid.png";
+import NFT from "../assets/highlighted-nft.png";
 
 export default function Home() {
+    const [NFTsData, setNFTsData] = useState([])
+    const randomNum = Math.floor(Math.random() * 100)
+    useEffect(() => {
+        fetch('http://localhost:3000/tokens')
+            .then(response => response.json())
+            .then(data => setNFTsData(data.tokens))
+            .catch(error => console.error(error))
+    },[])
     return (
         <div className="flex justify-center object-center xl:mx-36">
             <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid lg:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">
@@ -29,23 +40,30 @@ export default function Home() {
                     </Link>
                 </div>
                 <motion.div 
+                    whileHover={{ scale: 0.90 }}
                     animate={{
                         rotateX: [0, -15, 0, 15, 0],
                         rotateY: [-35, 0, 35, 0, -35],
                         transition: { duration: 8, repeat: Infinity }
                     }}
-                    className="w-72 lg:w-96 lg:mx-14 backface-hidden shadow-xl"
+                    className="object-center px-2 lg:mx-14 backface-hidden rounded-2xl shadow-xl"
                 >
-                    <div className="p-4 bg-[#404040] rounded-lg">
-                        <img src={Highlighted} alt="Highlighted NFT" />
-                        <div className="flex mt-10">
-                            <img src={Avatar} width="70px" alt="Highlighted Avatar" />
-                            <div className="my-auto pl-3">
-                                <h4 className="text-white font-bold text-xl">animakid</h4>
-                                <p className="text-[#2B2B2B] font-semibold text-xs md:text-lg">Total Sales: <span className="text-white text-xs md:text-lg">34.53 ETH</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    {NFTsData.map((nft, index) => {
+                    
+                    if (index === randomNum) {
+                        return (
+                            <NFTCard 
+                                key={nft.token.tokenId}
+                                id={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                image={nft.token.image}
+                                title={nft.token.name}
+                                artist={nft.token.collection.slug}
+                                artistAvatar={nft.token.collection.image?nft.token.collection.image:nft.token.collection.imageUrl}
+                                price={nft.market.floorAsk.price.amount.decimal}
+                                highestBid={(Math.random() * 10).toFixed(2)}
+                        />)
+                    }
+                })}
                 </motion.div>
                 <Link to="/register" className="w-full">
                     <motion.button

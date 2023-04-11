@@ -13,14 +13,12 @@ export default function MarketplacePage() {
         fetch('http://localhost:3000/tokens')
             .then(response => response.json())
             .then(data => setNFTsData(data.tokens))
-            // .then(data => console.log(data.tokens))
             .catch(error => console.error(error))
         fetch('http://localhost:3000/collections')
             .then(response => response.json())
             .then(data => setCollectionsData(data.collections))
             .catch(error => console.error(error));
     },[])
-    console.log(NFTsData)
     return (
         <div className="text-white mt-10 lg:mt-20 font-workSans">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">
