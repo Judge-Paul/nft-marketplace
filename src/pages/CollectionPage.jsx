@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BG from "../assets/artist-bg.png"
 import Avatar from "../assets/artists-avatars/animakid-square.png"
 import { motion } from "framer-motion";
@@ -9,12 +9,34 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import NFTCard from "../components/cards/NFTCard";
 import icon from "../assets/artists-avatars/Animakid.png";
 import NFT from "../assets/highlighted-nft.png";
+import { useParams } from "react-router-dom";
 
-export default function ArtistPage() {
+export default function CollectionPage() {
     const [selected, setSelected] = useState("")
+    const [collectionData, setCollectionData] = useState(null)
+    const { id } = useParams();
+    useEffect(() => {
+        console.log(1)
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:3000/collection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                });
+                const data = await response.json();
+                console.log(data)
+                setCollectionData(data.collections)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchData()
+    }, [id])
+    console.log(collectionData)
     return (
         <div className="text-white font-workSans">
-            <div className="bg-artistBg">
+            <div className="bg-artistBg lg:h-88">
                 <img src={BG} className="w-full" />
             </div>
             <div className="px-8 sm:px-32">

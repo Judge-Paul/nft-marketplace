@@ -9,7 +9,7 @@ import ConnectPage from "./pages/ConnectPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import RankingsPage from "./pages/RankingsPage";
-import ArtistPage from "./pages/ArtistPage";
+import CollectionPage from "./pages/CollectionPage";
 import NftPage from "./pages/NftPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -36,7 +36,7 @@ export default function App() {
             <Route path="/connect" element={<ConnectPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/artist" element={<ArtistPage />} />
+            <Route path="/collection/:id" element={<CollectionPage />} />
             <Route path="/nft" element={<NftPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
