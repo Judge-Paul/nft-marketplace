@@ -10,11 +10,11 @@ export default function MarketplacePage() {
     const [collectionsData, setCollectionsData] = useState([])
     const [selected, setSelected] = useState("nfts")
     useEffect(() => {
-        fetch('http://localhost:3000/tokens')
+        fetch('https://nft-market.onrender.com:3000/tokens')
             .then(response => response.json())
             .then(data => setNFTsData(data.tokens))
             .catch(error => console.error(error))
-        fetch('http://localhost:3000/collections')
+        fetch('https://nft-market.onrender.com:3000/collections')
             .then(response => response.json())
             .then(data => setCollectionsData(data.collections))
             .catch(error => console.error(error));

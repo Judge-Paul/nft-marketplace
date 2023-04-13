@@ -9,19 +9,19 @@ export default function RankingsPage() {
     const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
     const [rankingsAllTime, setRankingsAllTime] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/collections-one-day')
+        fetch('https://nft-market.onrender.com:3000/collections-one-day')
             .then(response => response.json())
             .then(data => setRankingsOneDay(data.collections))
             .catch(error => console.error(error));
-        fetch('http://localhost:3000/collections-seven-days')
+        fetch('https://nft-market.onrender.com:3000/collections-seven-days')
             .then(response => response.json())
             .then(data => setRankingsSevenDays(data.collections))
             .catch(error => console.error(error));
-        fetch('http://localhost:3000/collections-thirty-days')
+        fetch('https://nft-market.onrender.com:3000/collections-thirty-days')
             .then(response => response.json())
             .then(data => setRankingsThirtyDays(data.collections))
             .catch(error => console.error(error));
-        fetch('http://localhost:3000/collections')
+        fetch('https://nft-market.onrender.com:3000/collections')
             .then(response => response.json())
             .then(data => setRankingsAllTime(data.collections))
             .catch(error => console.error(error));

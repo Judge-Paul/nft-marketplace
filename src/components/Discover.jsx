@@ -9,7 +9,7 @@ import NFTCard from "./cards/NFTCard";
 export default function Discover() {
     const [NFTsData, setNFTsData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/tokens')
+        fetch('https://nft-market.onrender.com:3000/tokens')
             .then(response => response.json())
             .then(data => setNFTsData(data.tokens))
             .catch(error => console.error(error))

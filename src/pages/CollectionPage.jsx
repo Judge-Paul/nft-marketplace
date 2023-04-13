@@ -19,7 +19,7 @@ export default function CollectionPage() {
         console.log(1)
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/collection', {
+                const response = await fetch('https://nft-market.onrender.com:3000/collection', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id: id })

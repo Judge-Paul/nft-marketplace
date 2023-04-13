@@ -55,7 +55,7 @@ getData();
 app.use(bodyParser.json())
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: ["http://localhost:5173", "https://nft-market-jadge.vercel.app"]
 }));
 
 app.get("/collections-one-day", async (req, res) => {
