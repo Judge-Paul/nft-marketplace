@@ -4,7 +4,7 @@ import CollectionCard from "./cards/CollectionCard";
 export default function Trending() {
     const [collectionsData, setCollectionsData] = useState([])
     useEffect(() => {
-        fetch('https://nft-market.onrender.com:3000/collections')
+        fetch('https://nft-market.onrender.com/collections')
             .then(response => response.json())
             .then(data => setCollectionsData(data.collections))
             .catch(error => console.error(error));

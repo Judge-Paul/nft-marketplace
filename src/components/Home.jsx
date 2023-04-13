@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Highlighted from "../assets/highlighted-nft.png"
-import Avatar from "../assets/artists-avatars/Animakid.png"
 import { motion } from "framer-motion";
 import { SlRocket } from "react-icons/sl"
 import { Link } from "react-router-dom";
 import NFTCard from "./cards/NFTCard";
-import icon from "../assets/artists-avatars/Animakid.png";
-import NFT from "../assets/highlighted-nft.png";
 
 export default function Home() {
     const [NFTsData, setNFTsData] = useState([])
     const randomNum = Math.floor(Math.random() * 100)
     useEffect(() => {
-        fetch('https://nft-market.onrender.com:3000/tokens')
+        fetch('https://nft-market.onrender.com/tokens')
             .then(response => response.json())
             .then(data => setNFTsData(data.tokens))
             .catch(error => console.error(error))
