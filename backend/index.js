@@ -78,14 +78,9 @@ app.post('/collection', (req, res) => {
         sdk.auth('bdda386d-33f0-56a7-8e34-4b41089e03e9');
         const { data } = await sdk.getCollectionsV5({id: id, accept: '*/*'})
         res.send(data)
-<<<<<<< HEAD
         console.log(data)
     }
     getCollection()
-=======
-    }
-    getCollection
->>>>>>> cdc912b0500ad687c24ac982aed06c67123f07dc
 });
 
 app.get("/collections", async (req, res) => {
