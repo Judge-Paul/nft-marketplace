@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+}
+
+marquee:not(:hover) {
+    overflow: auto;
+}
