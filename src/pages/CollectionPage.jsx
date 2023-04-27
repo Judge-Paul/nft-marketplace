@@ -16,10 +16,6 @@ export default function CollectionPage() {
     const [collectionData, setCollectionData] = useState(null)
     const { id } = useParams();
     useEffect(() => {
-<<<<<<< HEAD
-=======
-        console.log(1)
->>>>>>> cdc912b0500ad687c24ac982aed06c67123f07dc
         async function fetchData() {
             try {
                 const response = await fetch('https://nft-market.onrender.com/collection', {
@@ -27,10 +23,7 @@ export default function CollectionPage() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id: id })
                 });
-<<<<<<< HEAD
                 console.log("Hello")
-=======
->>>>>>> cdc912b0500ad687c24ac982aed06c67123f07dc
                 const data = await response.json();
                 console.log(data)
                 setCollectionData(data.collections)
@@ -39,12 +32,7 @@ export default function CollectionPage() {
             }
         }
         fetchData()
-<<<<<<< HEAD
     }, [id, collectionData])
-=======
-    }, [id])
-    console.log(collectionData)
->>>>>>> cdc912b0500ad687c24ac982aed06c67123f07dc
     return (
         <div className="text-white font-workSans">
             <div className="bg-artistBg lg:h-88">
@@ -122,17 +110,11 @@ export default function CollectionPage() {
                                 name: "Collection",
                                 amount: 4
                             }
-<<<<<<< HEAD
                         ].map((category, index) => {
                             return (
                             <button 
                                 key={index}
                                 className="text-center sm:text-xl font-semibold" onClick={() => setSelected(category.name)}>
-=======
-                        ].map(category => {
-                            return (
-                            <button className="text-center sm:text-xl font-semibold" onClick={() => setSelected(category.name)}>
->>>>>>> cdc912b0500ad687c24ac982aed06c67123f07dc
                                 <h4 className="py-4">
                                     {category.name}
                                     <span className="hidden md:inline font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
