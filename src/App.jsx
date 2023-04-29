@@ -29,7 +29,7 @@ export default function App() {
     <div className="bg-[#2B2B2B] scrollbar-hide">
       <BrowserRouter>
         <AuthProvider>
-          <Navbar />
+        <Navbar />
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
