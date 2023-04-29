@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import icon from "../assets/artists-avatars/Animakid.png";
 import { HiOutlineEye } from "react-icons/hi2";
 import NFT from "../assets/highlighted-nft.png";
 import NFTCard from "./cards/NFTCard";
+import { AuthContext } from "../store/AuthContext";
 
 export default function Discover() {
-    const [NFTsData, setNFTsData] = useState([])
-    useEffect(() => {
-        fetch('https://nft-market.onrender.com/tokens')
-            .then(response => response.json())
-            .then(data => setNFTsData(data.tokens))
-            .catch(error => console.error(error))
-    },[])
+    const { NFTsData } = useContext(AuthContext)
     return (
         <div
             className="mt-20 mb-20 lg:mb-36 font-workSans text-white"

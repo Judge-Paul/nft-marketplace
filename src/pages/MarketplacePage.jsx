@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import NFTCard from "../components/cards/NFTCard";
-import icon from "../assets/artists-avatars/Animakid.png";
-import NFT from "../assets/highlighted-nft.png";
 import CollectionCard from "../components/cards/CollectionCard";
+import { AuthContext } from "../store/AuthContext"
 
 export default function MarketplacePage() {
-    const [NFTsData, setNFTsData] = useState([])
-    const [collectionsData, setCollectionsData] = useState([])
+    const { NFTsData, collectionsData } = useContext(AuthContext)
     const [selected, setSelected] = useState("nfts")
-    useEffect(() => {
-        fetch('https://nft-market.onrender.com/tokens')
-            .then(response => response.json())
-            .then(data => setNFTsData(data.tokens))
-            .catch(error => console.error(error))
-        fetch('https://nft-market.onrender.com/collections')
-            .then(response => response.json())
-            .then(data => setCollectionsData(data.collections))
-            .catch(error => console.error(error));
-    },[])
     return (
         <div className="text-white mt-10 lg:mt-20 font-workSans">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">

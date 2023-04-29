@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from "react";
-import icon from "../assets/artists-avatars/Animakid.png"
+import React, { useState, useContext } from "react";
 import RankingsCard from "../components/cards/RankingsCard";
+import { AuthContext } from "../store/AuthContext";
 
 export default function RankingsPage() {
     const [selected, setSelected] = useState("Today")
-    const [rankingsOneDay, setRankingsOneDay] = useState([])
-    const [rankingsSevenDays, setRankingsSevenDays] = useState([])
-    const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
-    const [rankingsAllTime, setRankingsAllTime] = useState([])
-    useEffect(() => {
-        fetch('https://nft-market.onrender.com/collections-one-day')
-            .then(response => response.json())
-            .then(data => setRankingsOneDay(data.collections))
-            .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections-seven-days')
-            .then(response => response.json())
-            .then(data => setRankingsSevenDays(data.collections))
-            .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections-thirty-days')
-            .then(response => response.json())
-            .then(data => setRankingsThirtyDays(data.collections))
-            .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections')
-            .then(response => response.json())
-            .then(data => setRankingsAllTime(data.collections))
-            .catch(error => console.error(error));
-    },[])
-
+    const { rankingsOneDay, rankingsSevenDays, rankingsThirtyDays } = useContext(AuthContext)
+    const rankingsAllTime = useContext(AuthContext).collectionsData
     return (
         <div className="font-workSans text-white mt-10 lg:mt-20">
             <div className="px-8 sm:px-32 mb-10 lg:mb-20">

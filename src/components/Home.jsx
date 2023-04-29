@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { SlRocket } from "react-icons/sl"
 import { Link } from "react-router-dom";
 import NFTCard from "./cards/NFTCard";
+import { AuthContext } from "../store/AuthContext";
 
 export default function Home() {
-    const [NFTsData, setNFTsData] = useState([])
+    const { NFTsData } = useContext(AuthContext)
     const randomNum = Math.floor(Math.random() * 100)
-    useEffect(() => {
-        fetch('https://nft-market.onrender.com/tokens')
-            .then(response => response.json())
-            .then(data => setNFTsData(data.tokens))
-            .catch(error => console.error(error))
-    },[])
     return (
         <div className="flex justify-center object-center xl:mx-36">
             <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid lg:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">

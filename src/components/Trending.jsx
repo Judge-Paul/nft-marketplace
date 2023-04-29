@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CollectionCard from "./cards/CollectionCard";
+import { AuthContext } from "../store/AuthContext";
 
 export default function Trending() {
-    const [collectionsData, setCollectionsData] = useState([])
-    useEffect(() => {
-        fetch('https://nft-market.onrender.com/collections')
-            .then(response => response.json())
-            .then(data => setCollectionsData(data.collections))
-            .catch(error => console.error(error));
-    },[])
-    
+    const { collectionsData } = useContext(AuthContext)
     return (
         <div className="mt-20 mb-20 lg:mb-36 font-workSans px-8 sm:px-32 text-white">
             <h4 className="text-3xl md:text-[2.5rem] font-bold">
