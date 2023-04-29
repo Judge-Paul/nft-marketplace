@@ -79,6 +79,13 @@ app.get("/collections", async (req, res) => {
   res.send(collections);
 });
 
+app.post('/collection', async (req, res) => {
+  const { id } = req.body;
+  sdk.auth('bdda386d-33f0-56a7-8e34-4b41089e03e9');
+  const { data } = await sdk.getCollectionsV5({ id, accept: '*/*' });
+  res.send(data);
+});
+
 app.get("/tokens", async (req, res) => {
   res.send(tokens);
 });
