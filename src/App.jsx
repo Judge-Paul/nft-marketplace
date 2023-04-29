@@ -12,6 +12,7 @@ import RankingsPage from "./pages/RankingsPage";
 import CollectionPage from "./pages/CollectionPage";
 import NftPage from "./pages/NftPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import AuthProvider from "./store/AuthContext";
 
 export default function App() {
   function ScrollToTop() {
@@ -27,20 +28,22 @@ export default function App() {
   return(
     <div className="bg-[#2B2B2B] scrollbar-hide">
       <BrowserRouter>
-        <Navbar />
-        <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/marketplace" element={<MarketplacePage />} />
-            <Route path="/rankings" element={<RankingsPage />} />
-            <Route path="/connect" element={<ConnectPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/collection/:id" element={<CollectionPage />} />
-            <Route path="/nft" element={<NftPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/marketplace" element={<MarketplacePage />} />
+              <Route path="/rankings" element={<RankingsPage />} />
+              <Route path="/connect" element={<ConnectPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/collection/:id" element={<CollectionPage />} />
+              <Route path="/nft" element={<NftPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          <Footer />
+        </AuthProvider>
       </BrowserRouter>
     </div>
     
