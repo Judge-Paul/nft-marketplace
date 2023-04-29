@@ -82,3 +82,5 @@ app.get("/collections", async (req, res) => {
 app.get("/tokens", async (req, res) => {
   res.send(tokens);
 });
+
+exports.api = functions.https.onRequest(app);

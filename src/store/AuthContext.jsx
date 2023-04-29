@@ -16,23 +16,23 @@ export default function AuthProvider(props) {
     const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
 
     useEffect(() => {
-        fetch('https://nft-market.onrender.com/tokens')
+        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
             .then(response => response.json())
             .then(data => setNFTsData(data.tokens))
             .catch(error => console.error(error))
-        fetch('https://nft-market.onrender.com/collections')
+        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections')
             .then(response => response.json())
             .then(data => setCollectionsData(data.collections))
             .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections-one-day')
+        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-one-day')
             .then(response => response.json())
             .then(data => setRankingsOneDay(data.collections))
             .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections-seven-days')
+        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-seven-days')
             .then(response => response.json())
             .then(data => setRankingsSevenDays(data.collections))
             .catch(error => console.error(error));
-        fetch('https://nft-market.onrender.com/collections-thirty-days')
+        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-thirty-days')
             .then(response => response.json())
             .then(data => setRankingsThirtyDays(data.collections))
             .catch(error => console.error(error));
