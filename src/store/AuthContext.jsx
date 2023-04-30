@@ -2,10 +2,15 @@ import { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext({
     NFTsData: [],
+    setNFTsData: () => {},
     collectionsData: [],
+    setCollectionsData: () => {},
     rankingsOneDay: [],
+    setRankingsOneDay: () => {},
     rankingsSevenDays: [],
+    setRankingsSevenDays: () => {},
     rankingsThirtyDays: [],
+    setRankingsThirtyDays: () => {}
 });
 
 export default function AuthProvider(props) {

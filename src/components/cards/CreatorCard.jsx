@@ -1,17 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { formatNum } from "../../libs/Functions";
 
 export default function CreatorCard({id, position, avatar, name, sales}) {
-    function formatNum(num) {
-        if (num >= 1000000) {
-          return (num / 1000000).toFixed(2) + 'M';
-        } else if (num >= 1000) {
-          return (num / 1000).toFixed(2) + 'K';
-        } else {
-          return num;
-        }
-      }
     return (
         <motion.div whileHover={{ scale: 0.92 }} className="bg-[#3B3B3B] px-3 py-5 rounded-2xl flex xl:block w-80 xl:w-full">
             <Link to={`/collection/${id}`}>

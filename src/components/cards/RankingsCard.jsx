@@ -1,19 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { formatNum } from "../../libs/Functions";
 
 export default function RankingsCard({position, icon, artist, change, sales, volume}) {
-    function formatNum(num) {
-        if (num >= 1000000) {
-          return (num / 1000000).toFixed(2) + 'M';
-        } else if (num >= 1000) {
-          return (num / 1000).toFixed(1) + 'K';
-        } else if (num === null || undefined || NaN) {
-          return 0
-        } else {
-            return num.toFixed(2)
-        }
-    }
+    
     return (
         <Link>
             <div className="flex mt-5 md:mt-7 rounded-2xl px-4 sm:px-8 py-2.5 border border-[#3B3B3B] bg-[#3B3B3B] font-spaceMono text-white text-md md:text-md lg:text-lg">
