@@ -15,4 +15,4 @@ export function generateNumber(min, max) {
     const randomIndex = Math.floor(Math.random() * range);
     const randomNumber = min + randomIndex * 5;
     return randomNumber;
-  }  
+  } 
