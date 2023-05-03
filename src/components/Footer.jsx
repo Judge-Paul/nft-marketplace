@@ -13,7 +13,7 @@ export default function Footer() {
                     <BiStoreAlt className="text-[#A259FF]" size="30px" />
                     <h4 className="mb-5 pl-3 text-xl text-white font-bold font-spaceMono">NFT Marketplace</h4>
                 </div>
-                <h4>NFT marketplace UI created with Anima for Figma.</h4>
+                <h4>NFT marketplace created by <a href="https://twitter.com/PaulOgebe" className="text-blue-500 hover:text-blue-700">paulogebe</a></h4>
                 <p className="mt-3">Join our community</p>
                 <div className="flex mt-3">
                     <a href="https://www.discord.com">

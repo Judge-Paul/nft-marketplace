@@ -1,6 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from "react-firebase-hooks/auth"
+import { toast } from 'react-toastify';
 
 export const AuthContext = createContext({
+    user: {},
+    logout: () => {},
     NFTsData: [],
     setNFTsData: () => {},
     collectionsData: [],
@@ -14,12 +20,27 @@ export const AuthContext = createContext({
 });
 
 export default function AuthProvider(props) {
+    const [user] = useAuthState(auth)
     const [NFTsData, setNFTsData] = useState([])
     const [collectionsData, setCollectionsData] = useState([])
     const [rankingsOneDay, setRankingsOneDay] = useState([])
     const [rankingsSevenDays, setRankingsSevenDays] = useState([])
     const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
-
+    
+    const logout = () => { 
+      signOut(auth).then(() => {
+        toast.success("Signed Out", {
+          position: "top-right",
+          autoClose: 1000,
+          theme: "dark",
+      })
+      }).catch((error) => {
+        toast.error(`${error}`, {
+          position: "top-right",
+          autoClose: 1000,
+          theme: "dark",
+      })})
+    }
     useEffect(() => {
         if (NFTsData.length === 0 && !localStorage.getItem('NFTsData')) {
           fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
@@ -73,6 +94,8 @@ export default function AuthProvider(props) {
     return (
         <AuthContext.Provider
             value={{
+                user,
+                logout,
                 NFTsData,
                 setNFTsData,
                 collectionsData,

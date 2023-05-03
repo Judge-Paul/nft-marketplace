@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Logo from "../assets/Logo.png";
 import { BiStoreAlt } from "react-icons/bi"
 import { AiOutlineUser } from "react-icons/ai"
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MenuButton } from "../assets/MenuButton";
+import { AuthContext } from "../store/AuthContext";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+import { MdKeyboardArrowDown } from "react-icons/md"
 
 function Navbar() {
+  const { user, logout } = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
+  console.log(user)
   return (
     <>
       <nav className="hidden md:block">
@@ -46,7 +52,32 @@ function Navbar() {
                         Connect a wallet
                   </motion.div>
                 </Link>
-                <Link to="/register" className="flex">
+              </div>
+            </div>
+            <div className="hidden md:block font-workSans">
+                {user ? <div 
+                    className="relative"
+                    onMouseEnter={() => setShowDropdown(true)}
+                    onMouseLeave={() => setShowDropdown(false)}
+                  >
+                  <motion.div
+                    className="flex text-white bg-[#A259FF] rounded-2xl p-2"
+                  >
+                    <HiOutlineUserCircle size="30px" />
+                    <MdKeyboardArrowDown className="mt-auto" size="25px" />
+                  </motion.div>
+                  {showDropdown && (
+                    <div className="absolute z-10 right-0 rounded-md shadow-lg p-2.5 bg-[#A259FF] w-28">
+                      <button
+                        onClick={logout}
+                        className="w-full text-center text-white font-semibold hover:text-gray-200"
+                      >
+                        Log Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+                :<Link to="/register" className="flex">
                   <motion.button
                     className="md:py-3 md:px-5 lg:py-4 lg:px-8 text-white text-sm flex rounded-2xl bg-[#A259FF]"
                     whileHover={{ scale: 0.92 }}
@@ -54,9 +85,7 @@ function Navbar() {
                       <AiOutlineUser size="22px" className="mr-2" />
                       Sign up
                   </motion.button>
-                </Link>
-
-              </div>
+                </Link>}
             </div>
           </div> 
         </div>
@@ -79,21 +108,31 @@ function Navbar() {
         >
           <Link to="/marketplace">
             <motion.h4 
-              className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
+              className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)} whileHover={{ scale: 0.92 }}>
               Marketplace 
             </motion.h4>
           </Link>
           <Link to="/rankings">
-            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)} whileHover={{ scale: 0.92 }}>
               Rankings
             </motion.h4>
           </Link>
           <Link to="/connect">
-            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)}>
+            <motion.h4 className="w-full text-white font-semibold text-2xl mt-10" onClick={() => setIsOpen(false)} whileHover={{ scale: 0.92 }}>
               Connect a wallet
             </motion.h4>
           </Link>
-          <Link to="/register">
+          {user ? <motion.h4 
+            className="w-full bg-[#A259FF] w-max mx-auto py-2 px-7 rounded-2xl text-white font-semibold text-2xl mt-10 cursor-pointer mb-7" 
+            onClick={() => {
+              logout()
+              setIsOpen(false)
+            }}
+            whileHover={{ scale: 0.92 }}
+          >
+              Logout
+            </motion.h4>
+          :<Link to="/register">
             <button 
               className="flex mx-auto flex rounded-2xl bg-[#A259FF] py-4 px-8 mb-10 text-white mt-10 text-2xl font-semibold"
               onClick={() => setIsOpen(false)}
@@ -101,7 +140,7 @@ function Navbar() {
               <AiOutlineUser size="30px" className="mr-2" />
               Sign up
             </button>
-          </Link>
+          </Link>}
         </motion.div>}
       </nav>
     </>
