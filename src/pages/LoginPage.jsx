@@ -1,34 +1,65 @@
 import React, { useContext, useState } from "react";
 import BG from "../assets/connect-bg.png"
-import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"
+import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
+import { FcGoogle } from "react-icons/fc";
+import { ImSpinner8 } from "react-icons/im";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth, provider } from "../firebase"
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { toast } from "react-toastify";
 import { AuthContext } from "../store/AuthContext";
 
 export default function LoginPage() {
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
-    const navigate = useNavigate
     const [formData, setFormData] = useState({ email: "", password: "" })
+    const [isLoading, setIsLoading] = useState(false)
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setFormData({ ...formData, [name]: value })
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        // setFormData({ username: "", password: ""})
+        setIsLoading(true)
         signInWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredentials) => {
-                navigate("/")
+                toast.success("Logged in successfully", {
+                    position: "top-right",
+                    autoClose: 1000,
+                    theme: "dark",
+                })
+                setIsLoading(false)
             }).catch((error) => {
                 toast.error(`${error}`, {
                     position: "top-right",
                     autoClose: 1000,
                     theme: "dark",
                 })
+                setIsLoading(false)
             })
+    }
+    if (user) {
+        navigate("/")
+    }
+    const handleLoginWithGoogle = () => {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const { user } = result
+            toast.success(`Signed in as ${user.displayName}!`, {
+              position: "top-right",
+              autoClose: 1000,
+              theme: "dark",
+            })
+          })
+          .catch((error) => {
+            console.log(error)
+            toast.error(`${error.message}`, {
+              position: "top-right",
+              autoClose: 1000,
+              theme: "dark",
+            })
+          })
     }
     return (
         <div className="block md:flex">
@@ -69,17 +100,26 @@ export default function LoginPage() {
                     </div>
                     <motion.button 
                         type="submit"
-                        className="mt-7 xl:mt-10 bg-[#A259FF] py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium"
+                        className="flex mt-7 justify-center xl:mt-10 bg-[#A259FF] py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium"
                         whileHover={{ scale: 0.95 }}    
                     > 
                         Log in to Account
+                        {isLoading && <ImSpinner8 className="animate-spin ml-2 my-auto" />}
                     </motion.button>
+                    <motion.div
+                        whileHover={{ scale: 0.95 }}
+                        onClick={handleLoginWithGoogle}
+                        className="flex justify-center mt-7 gap-2 text-black bg-white w-full lg:w-2/3 xl:w-2/4 rounded-full border-2 border-gray-500 font-semibold py-3 cursor-pointer"
+                    >
+                        <FcGoogle size="25px" />
+                        Continue with Google
+                    </motion.div>
                     <Link to="/register">
                         <motion.h4
                             className="w-full lg:w-2/3 xl:w-2/4 block text-center mt-7 hover:text-purple-400"
                             whileHover={{ scale: 0.95 }}
                         >
-                            Don't have an account?
+                            Don't have an account? Create one.
                         </motion.h4>
                     </Link>
                 </form>

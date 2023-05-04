@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import BG from "../assets/connect-bg.png"
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"
-import { FcGoogle } from "react-icons/fc"
+import { FcGoogle } from "react-icons/fc";
+import { ImSpinner8 } from "react-icons/im";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -10,13 +11,14 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../store/AuthContext";
 
 export default function RegisterPage() {
-    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    const { user } = useContext(AuthContext)
     const [formData, setFormData] = useState({
         email: "",
         password: "",
         confirmPassword: "",
     })
+    const [isLoading, setIsLoading] = useState(false)
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setFormData({ ...formData, [name]: value })
@@ -25,7 +27,6 @@ export default function RegisterPage() {
         event.preventDefault()
         createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredentials) => {
-                navigate("/")
                 toast.success("Account Created Successfully", {
                     position: "top-right",
                     autoClose: 1000,
@@ -43,12 +44,11 @@ export default function RegisterPage() {
         signInWithPopup(auth, provider)
           .then((result) => {
             const { user } = result
-            toast.success(`Signed in as ${user.displayName}!`, {
+            toast.success(`Created account as ${user.displayName}!`, {
               position: "top-right",
               autoClose: 1000,
               theme: "dark",
             })
-            navigate("/")
           })
           .catch((error) => {
             console.log(error)
@@ -58,7 +58,10 @@ export default function RegisterPage() {
               theme: "dark",
             })
           })
-      }
+    }
+    if (user) {
+        navigate("/")
+    }
     return (
         <div className="block md:flex">
             <img src={BG} className="w-full md:w-[50vw]" />
@@ -114,6 +117,7 @@ export default function RegisterPage() {
                         whileHover={{ scale: 0.95 }}    
                     > 
                         Create account
+                        {isLoading && <ImSpinner8 className="animate-spin ml-2 my-auto" />}
                     </motion.button>
                     <motion.div
                         whileHover={{ scale: 0.95 }}
@@ -128,7 +132,7 @@ export default function RegisterPage() {
                             className="w-full lg:w-2/3 xl:w-2/4 block text-center mt-7 hover:text-purple-400"
                             whileHover={{ scale: 0.95 }}
                         >
-                            Already have an account?
+                            Already have an account? Login.
                         </motion.h4>
                     </Link>
                 </form>
