@@ -23,9 +23,32 @@ export default function RegisterPage() {
         const { name, value } = event.target
         setFormData({ ...formData, [name]: value })
     }
+    const validateForm = ({ email, password, confirmPassword }) => {
+        const errors = {}
+        if (!email) {
+          errors.email = 'Email is required'
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+          errors.email = 'Invalid email address'
+        }
+        if (!password) {
+          errors.password = 'Password is required';
+        } else if (password.length < 6) {
+          errors.password = 'Password must be at least 6 characters long'
+        }
+        if (password !== confirmPassword) {
+          errors.confirmPassword = 'Passwords do not match'
+        }
+        return errors
+    }
     const handleRegister = (event) => {
         event.preventDefault()
-        createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        const formData = new FormData(event.target)
+        const errors = validateForm(Object.fromEntries(formData.entries()))
+        if (Object.keys(errors).length > 0) {
+            const errorKeys = Object.keys(errors)
+            toast.info(errors[errorKeys[0]])
+        } else {
+            createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredentials) => {
                 toast.success("Account Created Successfully", {
                     position: "top-right",
@@ -39,6 +62,8 @@ export default function RegisterPage() {
                     theme: "dark",
                 })
             })
+        }
+        
     }
     const handleRegisterWithGoogle = () => {
         signInWithPopup(auth, provider)
