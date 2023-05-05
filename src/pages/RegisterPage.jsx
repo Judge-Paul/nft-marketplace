@@ -31,7 +31,7 @@ export default function RegisterPage() {
           errors.email = 'Invalid email address'
         }
         if (!password) {
-          errors.password = 'Password is required';
+          errors.password = 'Password is required'
         } else if (password.length < 6) {
           errors.password = 'Password must be at least 6 characters long'
         }
@@ -42,11 +42,14 @@ export default function RegisterPage() {
     }
     const handleRegister = (event) => {
         event.preventDefault()
-        const formData = new FormData(event.target)
-        const errors = validateForm(Object.fromEntries(formData.entries()))
+        setIsLoading(true)
+        const errorFormData = new FormData(event.target)
+        const errors = validateForm(Object.fromEntries(errorFormData.entries()))
+        console.log(auth, formData.email, formData.password)
         if (Object.keys(errors).length > 0) {
             const errorKeys = Object.keys(errors)
             toast.info(errors[errorKeys[0]])
+            setIsLoading(false)
         } else {
             createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredentials) => {
@@ -82,6 +85,7 @@ export default function RegisterPage() {
               autoClose: 1000,
               theme: "dark",
             })
+            setIsLoading(false)
           })
     }
     if (user) {
@@ -138,7 +142,9 @@ export default function RegisterPage() {
                         </div>
                     </div>
                     <motion.button 
-                        className="mt-7 bg-[#A259FF] py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium"
+                        disabled={isLoading ? true : false}
+                        type="submit"
+                        className={`flex mt-7 justify-center xl:mt-10 py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium ${isLoading ? "bg-[#A259FF80] cursor-not-allowed" : "bg-[#A259FF]"}`}
                         whileHover={{ scale: 0.95 }}    
                     > 
                         Create account

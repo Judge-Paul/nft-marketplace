@@ -99,8 +99,9 @@ export default function LoginPage() {
                         </div>
                     </div>
                     <motion.button 
+                        disabled={isLoading ? true : false}
                         type="submit"
-                        className="flex mt-7 justify-center xl:mt-10 bg-[#A259FF] py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium"
+                        className={`flex mt-7 justify-center xl:mt-10 py-3 w-full lg:w-2/3 xl:w-2/4 rounded-full font-medium ${isLoading ? "bg-[#A259FF80] cursor-not-allowed" : "bg-[#A259FF]"}`}
                         whileHover={{ scale: 0.95 }}    
                     > 
                         Log in to Account
