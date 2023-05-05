@@ -26,7 +26,7 @@ function Navbar() {
                   <img src={Logo} alt="NFT Marketplace Logo" className="mt-2" onClick={() => {setIsOpen(false)}} />
               </Link>
             </div>
-            <div className="hidden md:block font-workSans font-bold">
+            <div className="hidden md:block my-auto font-workSans font-bold">
               <div className="lg:ml-10 flex items-center space-x-4 md:text-sm lg:text-lg">
                 <Link to="/marketplace">
                   <motion.div 
