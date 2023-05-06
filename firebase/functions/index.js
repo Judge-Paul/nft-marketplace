@@ -4,13 +4,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const api = require("api")("@reservoirprotocol/v3.0#2sq1jdslllg6zxko6");
 
-const app = express();
+const app = express()
 
-let collections = null;
-let collectionsOneDay = null;
-let collectionsSevenDays = null;
-let collectionsThirtyDays = null;
-let tokens = null;
+let collections = null
+let collectionsOneDay = null
+let collectionsSevenDays = null
+let collectionsThirtyDays = null
+let tokens = []
 
 async function getOrderedData(sortBy) {
   try {
@@ -43,13 +43,23 @@ async function getTokensData(collection, limit) {
 }
 
 async function getData() {
-  collectionsOneDay = await getOrderedData("1DayVolume");
-  collectionsSevenDays = await getOrderedData("7DayVolume");
-  collectionsThirtyDays = await getOrderedData("30DayVolume");
-  collections = await getCollectionsData();
-  tokens = await getTokensData("0xed5af388653567af2f388e6224dc7c4b3241c544", "100");
-  // tokens += await getTokensData("0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", "100");
-  // tokens += await getTokensData("0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", "100");
+  collections = await getCollectionsData()
+  collectionsOneDay = await getOrderedData("1DayVolume")
+  collectionsSevenDays = await getOrderedData("7DayVolume")
+  collectionsThirtyDays = await getOrderedData("30DayVolume")
+  
+  async function fetchTokenData(collectionsResult) {
+    const limit = "100";
+    let allTokenData = [];
+
+    for (const collection of collectionsResult.collections) {
+      let tokenData = await getTokensData(collection.id, limit);
+      allTokenData = allTokenData.concat(tokenData);
+    }
+  
+    return allTokenData;
+  }
+  tokens = fetchTokenData(collections)
 }
 
 getData();

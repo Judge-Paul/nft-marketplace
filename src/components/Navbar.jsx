@@ -13,7 +13,6 @@ function Navbar() {
   const { user, logout } = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
-  console.log(user)
   return (
     <>
       <nav className="hidden md:block">
