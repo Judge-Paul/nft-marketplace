@@ -115,13 +115,6 @@ export default function RankingsPage() {
                           change={collection.volumeChange["30day"]}
                     />)
                 })}
-                    {/* <RankingsCard position={1} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={2} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={3} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={4} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={5} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={6} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} />
-                    <RankingsCard position={7} icon={icon} artist="Jaydon Ekstrom Bothman" change={1.41} sales={602} volume={12.4} /> */}
                 </div>
             </div>
         </div>

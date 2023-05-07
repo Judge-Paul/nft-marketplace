@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { RxGlobe, RxDiscordLogo, RxTwitterLogo } from "react-icons/rx";
-import NFTCard from "../components/cards/NFTCard";
-import NFT from "../assets/highlighted-nft.png";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 import Spinner from "../components/Spinner";
