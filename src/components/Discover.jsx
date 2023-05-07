@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import icon from "../assets/artists-avatars/Animakid.png";
 import { HiOutlineEye } from "react-icons/hi2";
-import NFT from "../assets/highlighted-nft.png";
 import NFTCard from "./cards/NFTCard";
 import { AuthContext } from "../store/AuthContext";
 
@@ -36,11 +34,12 @@ export default function Discover() {
                 {NFTsData.map((nft, index) => {
                     if (index < 3) {
                         let className
-                        className=index === 1 ?"sm:hidden xl:block bg-[#3B3B3B]" : "bg-[#3B3B3B]"
+                        className=index === 1 ? "sm:hidden xl:block bg-[#3B3B3B]" : "bg-[#3B3B3B]"
                         return (
                             <NFTCard 
                                 key={nft.token.tokenId}
-                                id={`${nft.token.collection.id}/${nft.token.tokenId}`}
+                                id={nft.token.collection.id}
+                                tokenId={nft.token.tokenId}
                                 image={nft.token.image}
                                 title={nft.token.name}
                                 artist={nft.token.collection.slug}

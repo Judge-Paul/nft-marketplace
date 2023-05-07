@@ -27,7 +27,6 @@ export default function AuthProvider(props) {
     const [rankingsSevenDays, setRankingsSevenDays] = useState([])
     const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
   
-    console.log(NFTsData)
     const logout = () => { 
       signOut(auth).then(() => {
         toast.success("Signed Out", {

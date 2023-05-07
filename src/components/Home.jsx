@@ -7,7 +7,7 @@ import { AuthContext } from "../store/AuthContext";
 
 export default function Home() {
     const { NFTsData } = useContext(AuthContext)
-    const randomNum = Math.floor(Math.random() * 100)
+    const randomNum = Math.floor(Math.random() * NFTsData.length)
     return (
         <div className="flex justify-center object-center xl:mx-36">
             <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid lg:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">
@@ -45,7 +45,8 @@ export default function Home() {
                         return (
                             <NFTCard 
                                 key={nft.token.tokenId}
-                                id={`${nft.token.collection.id}/${nft.token.tokenId}`}
+                                id={nft.token.collection.id}
+                                tokenId={nft.token.tokenId}
                                 image={nft.token.image}
                                 title={nft.token.name}
                                 artist={nft.token.collection.slug}
@@ -68,16 +69,16 @@ export default function Home() {
                 <div className="mt-0 mx-auto">
                     <div className="flex place-items-left">
                     <div className="pr-10">
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">240k+</h4>
+                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">10k+</h4>
                         <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Total Sale</p>
                     </div>
                     <div className="pr-10">
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">100k+</h4>
+                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">4k+</h4>
                         <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Auctions</p>
                     </div>
                     <div>
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">240k+</h4>
-                        <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Artists</p>
+                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">1k+</h4>
+                        <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Collections</p>
                     </div>
                     </div>
                 </div>

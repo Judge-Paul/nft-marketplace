@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { formatNum } from "../../libs/Functions";
 
-export default function RankingsCard({position, icon, artist, change, sales, volume}) {
+export default function RankingsCard({slug, position, icon, artist, change, sales, volume}) {
     
     return (
-        <Link>
+        <Link to={`/${slug}`}>
             <div className="flex mt-5 md:mt-7 rounded-2xl px-4 sm:px-8 py-2.5 border border-[#3B3B3B] bg-[#3B3B3B] font-spaceMono text-white text-md md:text-md lg:text-lg">
                 <div className="flex flex-1">
                     <span className="bg-[#2B2B2B] rounded-full px-2.5 my-auto">{position}</span>

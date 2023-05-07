@@ -16,7 +16,6 @@ function Navbar() {
   return (
     <>
       <nav className="hidden md:block">
-        <marquee className="py-4 text-white border-b border-t border-gray-500">This site is a sample site. Real NFTs can't be bought or sold here. Real Creators can't create, mint or sell NFTs here. And the NFT data is gotten from <a href="https://reservoir.tools" className="text-blue-400 hover:text-blue-700">Reservoir's</a> api.</marquee>
         <div className="px-2 py-4 sm:px-6 xl:px-20">
           <div className="flex justify-between">
             <div className="flex-shrink-0 flex items-center">
