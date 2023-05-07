@@ -55,7 +55,7 @@ export default function AuthProvider(props) {
               }
             })
             setNFTsData(allTokens)
-            sessionStorage.setItem('NFTsData', JSON.stringify(data.tokens))
+            sessionStorage.setItem('NFTsData', JSON.stringify(allTokens))
           })
           .catch(error => console.error(error))
     
