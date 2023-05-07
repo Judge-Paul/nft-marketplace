@@ -44,7 +44,7 @@ export default function Creators() {
                     })}
                 <Link to="/rankings">
                   <motion.button
-                      className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold"
+                      className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-72 rounded-2xl font-semibold"
                       whileHover={{ scale: 0.92 }}
                   >
                       <SlRocket className="mr-2 text-lg text-[#A259FF]" />

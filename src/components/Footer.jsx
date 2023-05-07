@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
             <div className="lg:ml-20 lg:col-span-2 mt-10 lg:mt-0">
                 <h4 className="text-2xl mb-5 text-white font-bold font-spaceMono">Join Our Weekly Digest</h4>
-                <p className="text-[#CCCCCC] font-workSans w-72">Get exclusive promotions & updates straight to your inbox.</p>
+                <p className="text-[#CCCCCC] font-workSans w-64">Get exclusive promotions & updates straight to your inbox.</p>
                 <div className="relative mt-3 w-full sm:w-[26rem]">
                     <input
                         type="text"

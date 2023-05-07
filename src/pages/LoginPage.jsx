@@ -62,7 +62,7 @@ export default function LoginPage() {
     }
     return (
         <div className="block md:flex">
-            <img src={BG} className="w-full md:w-[50vw]" />
+            <img src={BG} className="hidden md:block w-[50vw]" />
             <div className="text-white font-workSans my-auto p-6 md:p-14 pt-10 md:pt-0 pb-10 md:pb-0">
                 <h4 className="text-3xl lg:text-[3.2rem] font-semibold md:pb-5">
                     Log in to Account

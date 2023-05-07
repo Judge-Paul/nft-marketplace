@@ -52,7 +52,7 @@ export default function Discover() {
                 })}
                 <Link to="/marketplace">
                     <motion.button
-                        className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-80 rounded-2xl font-semibold mt-7"
+                        className="flex md:hidden bg-transparent border-2 border-[#A259FF] justify-center py-4 w-72 rounded-2xl font-semibold mt-7"
                         whileHover={{ scale: 0.92 }}
                     >
                         <HiOutlineEye className="mr-2 lg:text-lg text-[#A259FF] my-auto" size="20px" />

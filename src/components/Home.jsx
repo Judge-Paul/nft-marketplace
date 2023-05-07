@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <div className="flex justify-center object-center xl:mx-36">
             <div className="mt-4 mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 grid lg:grid-cols-2 place-items-center xl:place-items-start gap-10 text-white font-workSans">
-                <div className="md:w-[20rem] xl:w-full mt-0">
+                <div className="md:w-[20rem] px-4 xl:w-full mt-0">
                     <div>
                         <h4 className="text-3xl lg:text-[2.5rem] xl:text-[4.2rem] xl:leading-[4.5rem] xl:pr-20 font-bold">
                             Discover Digital Art & Collect Nfts
@@ -30,7 +30,7 @@ export default function Home() {
                         </motion.button>
                     </Link>
                 </div>
-                <motion.div 
+                <motion.div
                     whileHover={{ scale: 0.90 }}
                     animate={{
                         rotateX: [0, -15, 0, 15, 0],
@@ -53,6 +53,7 @@ export default function Home() {
                                 artistAvatar={nft.token.collection.image?nft.token.collection.image:nft.token.collection.imageUrl}
                                 price={nft.market.floorAsk.price.amount.decimal}
                                 highestBid={(Math.random() * 10).toFixed(2)}
+                                small={true}
                         />)
                     }
                 })}
@@ -66,22 +67,6 @@ export default function Home() {
                             Get Started
                     </motion.button>
                 </Link>
-                <div className="mt-0 mx-auto">
-                    <div className="flex place-items-left">
-                    <div className="pr-10">
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">10k+</h4>
-                        <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Total Sale</p>
-                    </div>
-                    <div className="pr-10">
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">4k+</h4>
-                        <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Auctions</p>
-                    </div>
-                    <div>
-                        <h4 className="font-spaceMono text-[1.5rem] lg:text-[1.9rem] font-black">1k+</h4>
-                        <p className="text-[0.9rem] lg:text-[1.5rem] font-medium">Collections</p>
-                    </div>
-                    </div>
-                </div>
             </div>
         </div>
     )
