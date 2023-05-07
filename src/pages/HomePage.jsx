@@ -16,13 +16,13 @@ export default function HomePage() {
         <>
             {NFTsData.length > 0 ? <div>
                 <Home />
-                {/* <Trending />
+                <Trending />
                 <Creators />
                 <Category />
                 <Discover />
                 <Highlighted />
                 <HowItWorks />
-                <Subscribe /> */}
+                <Subscribe />
             </div>: 
             <Spinner />}
         </>
