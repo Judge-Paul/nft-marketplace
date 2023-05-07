@@ -26,9 +26,8 @@ export default function AuthProvider(props) {
     const [rankingsOneDay, setRankingsOneDay] = useState([])
     const [rankingsSevenDays, setRankingsSevenDays] = useState([])
     const [rankingsThirtyDays, setRankingsThirtyDays] = useState([])
-    
+  
     console.log(NFTsData)
-    console.log(collectionsData)
     const logout = () => { 
       signOut(auth).then(() => {
         toast.success("Signed Out", {
@@ -44,11 +43,19 @@ export default function AuthProvider(props) {
       })})
     }
     useEffect(() => {
-      if (collectionsData.length === 0 && !sessionStorage.getItem('collectionsData')) {
+      if (NFTsData.length === 0 && (!sessionStorage.getItem('NFTsData') || sessionStorage.getItem('NFTsData') === undefined)) {
         fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
           .then(response => response.json())
           .then(data => {
-            setNFTsData(data.tokens)
+            let allTokens = []
+            data.map(tokenData => {
+              if (tokenData) {
+                  allTokens = allTokens.concat(tokenData.tokens).filter(nft => 
+                    nft.token.image && nft.market.floorAsk && nft.market.floorAsk.price !== null || undefined
+                  ).sort(() => Math.random() - 0.5)
+              }
+            })
+            setNFTsData(allTokens)
             sessionStorage.setItem('NFTsData', JSON.stringify(data.tokens))
           })
           .catch(error => console.error(error))

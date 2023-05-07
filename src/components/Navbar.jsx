@@ -71,7 +71,7 @@ function Navbar() {
                         onClick={logout}
                         className="w-full text-center text-white font-semibold hover:text-gray-200"
                       >
-                        Log Out
+                        Sign Out
                       </button>
                     </div>
                   )}
@@ -129,7 +129,7 @@ function Navbar() {
             }}
             whileHover={{ scale: 0.92 }}
           >
-              Logout
+              Sign Out
             </motion.h4>
           :<Link to="/register">
             <button 

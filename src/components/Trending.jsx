@@ -20,7 +20,7 @@ export default function Trending() {
                         return (
                             <CollectionCard 
                                 key={collection.id}
-                                id={collection.id}
+                                id={collection.slug}
                                 img1={collection.sampleImages[0]}
                                 img2={collection.sampleImages[1]}
                                 img3={collection.sampleImages[2]}

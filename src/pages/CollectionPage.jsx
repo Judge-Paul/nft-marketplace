@@ -33,9 +33,8 @@ export default function CollectionPage() {
     const { id } = useParams();
     
     useEffect(()=> {
-        setCollectionData(collectionsData?.filter(item => item.id === id))
+        setCollectionData(collectionsData?.filter(item => item.slug === id))
     }, [id, collectionsData])
-    console.log(collectionData)
     return (
         <>
             {collectionData ? collectionData.map(collection => {

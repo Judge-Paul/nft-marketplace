@@ -45,7 +45,7 @@ export default function Home() {
                         return (
                             <NFTCard 
                                 key={nft.token.tokenId}
-                                id={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                id={`${nft.token.collection.id}/${nft.token.tokenId}`}
                                 image={nft.token.image}
                                 title={nft.token.name}
                                 artist={nft.token.collection.slug}

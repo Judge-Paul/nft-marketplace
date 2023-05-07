@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function NFTCard({id, image, title, artist, artistAvatar, price, className }) {
     return (
-        <Link to={`/nft/${id}`}>
+        <Link to={`https://opensea.io/assets/ethereum/${id}`}>
             <motion.div 
                 whileHover={{ scale: 0.92 }} 
                 className={`rounded-2xl ${className} w-80 mt-7`}

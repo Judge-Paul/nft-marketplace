@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import NFTCard from "../components/cards/NFTCard";
 import CollectionCard from "../components/cards/CollectionCard";
 import { AuthContext } from "../store/AuthContext"
+import { formatNum } from "../libs/Functions";
 
 export default function MarketplacePage() {
     const { NFTsData, collectionsData } = useContext(AuthContext)
@@ -14,7 +15,7 @@ export default function MarketplacePage() {
                     Browse Marketplace
                 </h4>
                 <p className="text-lg lg:text-[1.55rem] mt-5 lg:mt-10 font-medium">
-                    Browse through more than 50k NFTs on the NFT Marketplace.
+                    Browse through more than {formatNum(NFTsData.length)} NFTs on the NFT Marketplace and purchase from OpenSea
                 </p>
                 <div className="relative mt-7 w-full">
                     <input
@@ -57,8 +58,8 @@ export default function MarketplacePage() {
                     NFTsData.map(nft => {
                         return (
                             <NFTCard 
-                                key={nft.token.tokenId}
-                                id={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                key={`${nft.token.collection.id}:${nft.token.tokenId}`}
+                                id={`${nft.token.collection.id}/${nft.token.tokenId}`}
                                 image={nft.token.image}
                                 title={nft.token.name}
                                 artist={nft.token.collection.slug}
@@ -76,7 +77,7 @@ export default function MarketplacePage() {
                         return (
                             <CollectionCard 
                                 key={collection.id}
-                                id={collection.id}
+                                id={collection.slug}
                                 img1={collection.sampleImages[0]}
                                 img2={collection.sampleImages[1]}
                                 img3={collection.sampleImages[2]}
