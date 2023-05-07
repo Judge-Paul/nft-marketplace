@@ -45,7 +45,6 @@ export default function RegisterPage() {
         setIsLoading(true)
         const errorFormData = new FormData(event.target)
         const errors = validateForm(Object.fromEntries(errorFormData.entries()))
-        console.log(auth, formData.email, formData.password)
         if (Object.keys(errors).length > 0) {
             const errorKeys = Object.keys(errors)
             toast.info(errors[errorKeys[0]])
@@ -79,7 +78,6 @@ export default function RegisterPage() {
             })
           })
           .catch((error) => {
-            console.log(error)
             toast.error(`${error.message}`, {
               position: "top-right",
               autoClose: 1000,

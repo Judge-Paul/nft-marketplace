@@ -53,7 +53,6 @@ export default function LoginPage() {
             })
           })
           .catch((error) => {
-            console.log(error)
             toast.error(`${error.message}`, {
               position: "top-right",
               autoClose: 1000,
