@@ -41,7 +41,7 @@ export default function AuthProvider(props) {
       })})
     }
     useEffect(() => {
-      if (NFTsData.length === 0 && (sessionStorage.getItem('NFTsData') === undefined || []) === true) {
+      if (NFTsData.length === 0 && (sessionStorage.getItem('NFTsData') === null)) {
         fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
           .then(response => response.json())
           .then(data => {
