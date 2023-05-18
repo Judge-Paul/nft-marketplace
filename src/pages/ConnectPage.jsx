@@ -1,5 +1,5 @@
 import React from "react";
-import BG from "../assets/connect-bg.png"
+import BG from "../assets/connect-bg.webp"
 import Metamask from "../assets/icons/Metamask.png"
 import Coinbase from "../assets/icons/Coinbase.png"
 import WalletConnect from "../assets/icons/WalletConnect.png"
