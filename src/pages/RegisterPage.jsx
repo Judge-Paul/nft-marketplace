@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import BG from "../assets/connect-bg.png"
+import BG from "../assets/connect-bg.webp"
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"
 import { FcGoogle } from "react-icons/fc";
 import { ImSpinner8 } from "react-icons/im";
