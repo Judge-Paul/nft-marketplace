@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AiOutlineMail } from "react-icons/ai";
-import Astronaut from "../assets/subscribe-bg.png"
+import Astronaut from "../assets/subscribe-bg.webp"
 
 export default function Subscribe() {
     return (

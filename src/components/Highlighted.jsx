@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../assets/artists-avatars/Animakid.png"
+import icon from "../assets/artists-avatars/Animakid.webp"
 import { motion } from "framer-motion";
 import { HiOutlineEye } from "react-icons/hi2";
 import Timer from "./Timer";

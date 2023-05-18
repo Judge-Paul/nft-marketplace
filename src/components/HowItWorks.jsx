@@ -1,7 +1,7 @@
 import React from "react";
-import WalletLogo from "../assets/how-it-works-images/wallet-logo.png"
-import CollectionLogo from "../assets/how-it-works-images/collection-logo.png"
-import EarningLogo from "../assets/how-it-works-images/earning-logo.png"
+import WalletLogo from "../assets/how-it-works-images/wallet-logo.webp"
+import CollectionLogo from "../assets/how-it-works-images/collection-logo.webp"
+import EarningLogo from "../assets/how-it-works-images/earning-logo.webp"
 import HowItWorksCard from "./cards/HowItWorksCard";
 
 export default function HowItWorks() {
