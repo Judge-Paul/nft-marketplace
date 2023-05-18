@@ -41,7 +41,7 @@ export default function AuthProvider(props) {
       })})
     }
     useEffect(() => {
-      if (NFTsData.length === 0 && (!sessionStorage.getItem('NFTsData'))) {
+      if (!sessionStorage.getItem('NFTsData')) {
         fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
           .then(response => response.json())
           .then(data => {
@@ -53,8 +53,10 @@ export default function AuthProvider(props) {
                   ).sort(() => Math.random() - 0.5)
               }
             })
-            setNFTsData(allTokens)
-            sessionStorage.setItem('NFTsData', JSON.stringify(allTokens))
+            if (allTokens.length > 0) {
+              setNFTsData(allTokens);
+              sessionStorage.setItem('NFTsData', JSON.stringify(allTokens));
+            }
           })
           .catch(error => console.error(error))
     
