@@ -41,64 +41,44 @@ export default function AuthProvider(props) {
       })})
     }
     useEffect(() => {
-      if (!sessionStorage.getItem('NFTsData')) {
-        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens')
-          .then(response => response.json())
-          .then(data => {
-            let allTokens = []
-            data.map(tokenData => {
-              if (tokenData) {
-                  allTokens = allTokens.concat(tokenData.tokens).filter(nft => 
-                    nft.token.image && nft.market.floorAsk && nft.market.floorAsk.price !== null || undefined
-                  ).sort(() => Math.random() - 0.5)
-              }
-            })
-            if (allTokens.length > 0) {
-              setNFTsData(allTokens);
-              sessionStorage.setItem('NFTsData', JSON.stringify(allTokens));
+      const fetchData = async () => {
+        try {
+          const nftsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens');
+          const nftsData = await nftsResponse.json();
+          let allTokens = [];
+          nftsData.forEach(tokenData => {
+            if (tokenData) {
+              allTokens = allTokens.concat(tokenData.tokens).filter(nft =>
+                nft.token.image && nft.market.floorAsk && nft.market.floorAsk.price !== null && nft.market.floorAsk.price !== undefined
+              ).sort(() => Math.random() - 0.5);
             }
-          })
-          .catch(error => console.error(error))
+          });
+          if (allTokens.length > 0) {
+            setNFTsData(allTokens);
+          }
     
-        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections')
-          .then(response => response.json())
-          .then(data => {
-            setCollectionsData(data.collections)
-            sessionStorage.setItem('collectionsData', JSON.stringify(data.collections))
-          })
-          .catch(error => console.error(error))
+          const collectionsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections');
+          const collectionsData = await collectionsResponse.json();
+          setCollectionsData(collectionsData.collections);
     
-        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-one-day')
-          .then(response => response.json())
-          .then(data => {
-            setRankingsOneDay(data.collections)
-            sessionStorage.setItem('rankingsOneDay', JSON.stringify(data.collections))
-          })
-          .catch(error => console.error(error))
+          const rankingsOneDayResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-one-day');
+          const rankingsOneDayData = await rankingsOneDayResponse.json();
+          setRankingsOneDay(rankingsOneDayData.collections);
     
-        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-seven-days')
-          .then(response => response.json())
-          .then(data => {
-            setRankingsSevenDays(data.collections)
-            sessionStorage.setItem('rankingsSevenDays', JSON.stringify(data.collections))
-          })
-          .catch(error => console.error(error))
+          const rankingsSevenDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-seven-days');
+          const rankingsSevenDaysData = await rankingsSevenDaysResponse.json();
+          setRankingsSevenDays(rankingsSevenDaysData.collections);
     
-        fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-thirty-days')
-          .then(response => response.json())
-          .then(data => {
-            setRankingsThirtyDays(data.collections)
-            sessionStorage.setItem('rankingsThirtyDays', JSON.stringify(data.collections))
-          })
-          .catch(error => console.error(error))
-      } else {
-        setNFTsData(JSON.parse(sessionStorage.getItem('NFTsData')))
-        setCollectionsData(JSON.parse(sessionStorage.getItem('collectionsData')))
-        setRankingsOneDay(JSON.parse(sessionStorage.getItem('rankingsOneDay')))
-        setRankingsSevenDays(JSON.parse(sessionStorage.getItem('rankingsSevenDays')))
-        setRankingsThirtyDays(JSON.parse(sessionStorage.getItem('rankingsThirtyDays')))
-      }
-    }, [])
+          const rankingsThirtyDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-thirty-days');
+          const rankingsThirtyDaysData = await rankingsThirtyDaysResponse.json();
+          setRankingsThirtyDays(rankingsThirtyDaysData.collections);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
+      fetchData();
+    }, []);    
     
 
     return (
