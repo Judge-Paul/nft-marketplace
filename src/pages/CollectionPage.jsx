@@ -80,7 +80,7 @@ export default function CollectionPage() {
                         <h4 className="font-spaceMono text-[#858584] text-2xl font-semibold">
                             Bio
                         </h4>
-                        <p className="text-2xl font-medium mt-5">
+                        <p className="text-xl md:text-2xl font-medium mt-5">
                             {collection.description?collection.description:"Nothing to see here."}
                         </p>
                         {collection.externalUrl && collection.discordUrl && collection.twitterUsername && <h4 className="font-spaceMono text-[#858584] text-2xl font-semibold mt-10">
@@ -88,13 +88,13 @@ export default function CollectionPage() {
                         </h4>}
                         <div className="flex mt-3 mb-8 text-[#858584]">
                             {collection.externalUrl && <a target="_blank" href={collection.externalUrl}>
-                                <RxGlobe size="30px" className="mr-3" />
+                                <RxGlobe size="40px" className="mr-5" />
                             </a>}
                             {collection.discordUrl && <a target="_blank" href={collection.discordUrl}>
-                                <RxDiscordLogo size="30px" className="mr-3" /> 
+                                <RxDiscordLogo size="40px" className="mr-5" /> 
                             </a>}
                             {collection.twitterUsername && <a target="_blank" href={collection.twitterUsername?`https://www.twitter.com/${collection.twitterUsername}`: null}>
-                                <RxTwitterLogo size="30px" className="mr-3" /> 
+                                <RxTwitterLogo size="40px" className="mr-5" /> 
                             </a>}
                         </div>
                     </div>

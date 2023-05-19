@@ -27,7 +27,7 @@ export default function CollectionCard({id, img1, img2, img3, total, artist, tit
             <div className="flex mt-2">
                 <Link to ={`/collection/${id}`}>
                     <motion.div whileHover={{ scale: 0.92 }}> 
-                        <img src={avatar} width="30px" className="rounded-full" />
+                        <img src={avatar} width="30px" className="rounded-full" alt={`${title} Collection Image`} />
                     </motion.div>
                 </Link>
                 <p className="pl-4 text-lg font-medium">{artist}</p>

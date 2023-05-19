@@ -9,11 +9,11 @@ export default function NFTCard({id, tokenId, image, title, artist, artistAvatar
                 whileHover={{ scale: 0.97 }} 
                 className={`rounded-2xl ${className} ${small ? "w-[14.5rem] md:w-96" : "w-72"} mt-7`}
             >
-                <img fetchpriority="high" src={image} className="rounded-t-2xl h-72 w-full" />
+                <img fetchpriority="high" src={image} className="rounded-t-2xl h-72 w-full" alt={title?title:`#${tokenId} image`} />
                 <div className="p-7">
                     <h4 className="text-2xl font-medium truncate">{title?title:`#${tokenId}`}</h4>
                     <div className="flex mb-3 mt-1">
-                            <img src={artistAvatar} width="40px" className="h-[40px] rounded-full" />
+                            <img src={artistAvatar} width="40px" className="h-[40px] rounded-full" alt={title?title:`#${tokenId} icon`} />
                         <p className="pl-2 my-auto truncate">{artist}</p>
                     </div>
                     <div className="flex justify-between">
