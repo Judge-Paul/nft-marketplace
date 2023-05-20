@@ -11,7 +11,7 @@ export default function Highlighted() {
                 <div className="flex flex-wrap justify-around">
                     <div className="mt-7">
                         <div className="flex bg-[#3B3B3B] w-max px-5 py-2 rounded-full">
-                            <img src={icon} width="30px" />
+                            <img src={icon} width="30px" alt="Animakid Icon" />
                             <p className="pl-4 my-auto font-medium">Animakid</p>
                         </div>
                         <h4 className="text-3xl text-[2.2rem] lg:text-[3.2rem] font-workSans font-bold mt-7">

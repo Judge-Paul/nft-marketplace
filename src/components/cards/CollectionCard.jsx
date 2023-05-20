@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CollectionCard({id, img1, img2, img3, total, artist, title, avatar, className}) {
     return (
-        <div className={`mb-4 mt-10 xl:mt-20 w-72 ${className}`}>
+        <div className={`mb-4 mt-10 w-72 ${className}`}>
             <Link to={`/collection/${id}`}><motion.img whileHover={{ scale: 0.92 }} src={img1? img1:avatar} alt="Sample Image" className="w-72 h-72 rounded-2xl" /></Link>
             <div className="grid grid-cols-3 gap-3 mt-4 mb-3 w-72">
                 <motion.div whileHover={{ scale: 0.92 }}>

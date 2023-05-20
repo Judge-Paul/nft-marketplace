@@ -42,43 +42,54 @@ export default function AuthProvider(props) {
     }
     useEffect(() => {
       const fetchData = async () => {
-        try {
-          const nftsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens');
-          const nftsData = await nftsResponse.json();
-          let allTokens = [];
-          nftsData.forEach(tokenData => {
-            if (tokenData) {
-              allTokens = allTokens.concat(tokenData.tokens).filter(nft =>
-                nft.token.image && nft.market.floorAsk && nft.market.floorAsk.price !== null && nft.market.floorAsk.price !== undefined
-              ).sort(() => Math.random() - 0.5);
+        const maxRetries = 3; // Maximum number of retries
+        let retryCount = 0;
+    
+        while (retryCount < maxRetries) {
+          try {
+            const nftsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/tokens');
+            const nftsData = await nftsResponse.json();
+            let allTokens = [];
+            nftsData.forEach(tokenData => {
+              if (tokenData) {
+                allTokens = allTokens.concat(tokenData.tokens).filter(nft =>
+                  nft.token.image && nft.market.floorAsk && nft.market.floorAsk.price !== null && nft.market.floorAsk.price !== undefined
+                ).sort(() => Math.random() - 0.5);
+              }
+            });
+            if (allTokens.length > 0) {
+              setNFTsData(allTokens);
             }
-          });
-          if (allTokens.length > 0) {
-            setNFTsData(allTokens);
+    
+            const collectionsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections');
+            const collectionsData = await collectionsResponse.json();
+            setCollectionsData(collectionsData.collections);
+    
+            const rankingsOneDayResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-one-day');
+            const rankingsOneDayData = await rankingsOneDayResponse.json();
+            setRankingsOneDay(rankingsOneDayData.collections);
+    
+            const rankingsSevenDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-seven-days');
+            const rankingsSevenDaysData = await rankingsSevenDaysResponse.json();
+            setRankingsSevenDays(rankingsSevenDaysData.collections);
+    
+            const rankingsThirtyDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-thirty-days');
+            const rankingsThirtyDaysData = await rankingsThirtyDaysResponse.json();
+            setRankingsThirtyDays(rankingsThirtyDaysData.collections);
+    
+            // If all requests succeed, break out of the loop
+            break;
+          } catch (error) {
+            console.error(error);
+            retryCount++;
+            // Wait for a certain duration before retrying (e.g., 1 second)
+            await new Promise(resolve => setTimeout(resolve, 1000));
           }
-    
-          const collectionsResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections');
-          const collectionsData = await collectionsResponse.json();
-          setCollectionsData(collectionsData.collections);
-    
-          const rankingsOneDayResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-one-day');
-          const rankingsOneDayData = await rankingsOneDayResponse.json();
-          setRankingsOneDay(rankingsOneDayData.collections);
-    
-          const rankingsSevenDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-seven-days');
-          const rankingsSevenDaysData = await rankingsSevenDaysResponse.json();
-          setRankingsSevenDays(rankingsSevenDaysData.collections);
-    
-          const rankingsThirtyDaysResponse = await fetch('https://us-central1-nft-market-cdc31.cloudfunctions.net/api/collections-thirty-days');
-          const rankingsThirtyDaysData = await rankingsThirtyDaysResponse.json();
-          setRankingsThirtyDays(rankingsThirtyDaysData.collections);
-        } catch (error) {
-          console.error(error);
         }
       };
     
       fetchData();
-    }, []);    
+    }, []);
     
 
     return (
