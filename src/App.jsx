@@ -1,10 +1,11 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AuthProvider from "./store/AuthContext";
 import Spinner from "./components/Spinner";
+import { Toaster } from "sonner";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MarketplacePage = lazy(() => import("./pages/MarketplacePage"));
@@ -26,9 +27,10 @@ function App() {
     return null;
   }
 
-  return(
+  return (
     <div className="bg-[#2B2B2B] scrollbar-hide">
       <BrowserRouter>
+        <Toaster />
         <AuthProvider>
           <Navbar />
           <ScrollToTop />
@@ -48,7 +50,7 @@ function App() {
         </AuthProvider>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
 export default App;
