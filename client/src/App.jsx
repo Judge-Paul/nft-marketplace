@@ -6,6 +6,10 @@ import Footer from "./components/Footer";
 import AuthProvider from "./store/AuthContext";
 import Spinner from "./components/Spinner";
 import { Toaster } from "sonner";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DataProvider from "./store/DataContext";
+
+const queryClient = new QueryClient();
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MarketplacePage = lazy(() => import("./pages/MarketplacePage"));
@@ -31,23 +35,27 @@ function App() {
     <div className="bg-[#2B2B2B] scrollbar-hide">
       <BrowserRouter>
         <Toaster />
-        <AuthProvider>
-          <Navbar />
-          <ScrollToTop />
-          <Suspense fallback={<Spinner />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/marketplace" element={<MarketplacePage />} />
-              <Route path="/rankings" element={<RankingsPage />} />
-              <Route path="/connect" element={<ConnectPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/collection/:id" element={<CollectionPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
-          <Footer />
-        </AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <Navbar />
+            <ScrollToTop />
+            <DataProvider>
+              <Suspense fallback={<Spinner />}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/marketplace" element={<MarketplacePage />} />
+                  <Route path="/rankings" element={<RankingsPage />} />
+                  <Route path="/connect" element={<ConnectPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/collection/:id" element={<CollectionPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </Suspense>
+            </DataProvider>
+            <Footer />
+          </AuthProvider>
+        </QueryClientProvider>
       </BrowserRouter>
     </div>
   );

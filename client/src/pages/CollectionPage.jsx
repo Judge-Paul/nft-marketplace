@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { RxGlobe, RxDiscordLogo, RxTwitterLogo } from "react-icons/rx";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../store/AuthContext";
+import { DataContext } from "../store/DataContext";
 import Spinner from "../components/Spinner";
 import { formatNum } from "../libs/Functions";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ function copyToClipboard(text) {
 export default function CollectionPage() {
   const [selected, setSelected] = useState("");
   const [collectionData, setCollectionData] = useState(null);
-  const { collectionsData } = useContext(AuthContext);
+  const { collectionsData } = useContext(DataContext);
   const { id } = useParams();
 
   useEffect(() => {

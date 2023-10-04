@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.35.7",
     "dotenv": "^16.0.3",
     "firebase": "^9.21.0",
     "framer-motion": "^10.2.3",
