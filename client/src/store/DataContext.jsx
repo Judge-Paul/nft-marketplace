@@ -21,23 +21,26 @@ export default function DataProvider({ children }) {
   const queries = [
     {
       queryKey: ["NFTs"],
-      queryFn: () => fetchData("http://localhost:3000/tokens"),
+      queryFn: () => fetchData("https://nft-market.onrender.com/tokens"),
     },
     {
       queryKey: ["collections"],
-      queryFn: () => fetchData("http://localhost:3000/collections"),
+      queryFn: () => fetchData("https://nft-market.onrender.com/collections"),
     },
     {
       queryKey: ["rankingsOneDay"],
-      queryFn: () => fetchData("http://localhost:3000/rankings/oneDay"),
+      queryFn: () =>
+        fetchData("https://nft-market.onrender.com/rankings/oneDay"),
     },
     {
       queryKey: ["rankingsSevenDays"],
-      queryFn: () => fetchData("http://localhost:3000/rankings/sevenDays"),
+      queryFn: () =>
+        fetchData("https://nft-market.onrender.com/rankings/sevenDays"),
     },
     {
       queryKey: ["rankingsThirtyDays"],
-      queryFn: () => fetchData("http://localhost:3000/rankings/thirtyDays"),
+      queryFn: () =>
+        fetchData("https://nft-market.onrender.com/rankings/thirtyDays"),
     },
   ];
 
@@ -51,6 +54,7 @@ export default function DataProvider({ children }) {
     return <p>Error fetching data</p>;
   }
 
+  console.log(queryResults);
   const NFTsData = queryResults[0].data;
   const collectionsData = queryResults[1].data.collections;
   const rankingsOneDay = queryResults[2].data.collections;
