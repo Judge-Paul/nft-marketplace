@@ -54,7 +54,6 @@ export default function DataProvider({ children }) {
     return <p>Error fetching data</p>;
   }
 
-  console.log(queryResults);
   const NFTsData = queryResults[0].data;
   const collectionsData = queryResults[1].data.collections;
   const rankingsOneDay = queryResults[2].data.collections;
