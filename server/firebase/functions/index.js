@@ -25,7 +25,7 @@ function getRandomInt(min, max) {
 }
 
 exports.hitServer = functions.pubsub
-  .schedule("every 10 minutes")
+  .schedule("every 3 minutes")
   .onRun(async (context) => {
     const currentTime = new Date().toLocaleString();
     const randomEndpointIndex = getRandomInt(0, endpoints.length - 1);
