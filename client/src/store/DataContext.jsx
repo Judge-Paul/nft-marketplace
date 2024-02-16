@@ -21,26 +21,38 @@ export default function DataProvider({ children }) {
   const queries = [
     {
       queryKey: ["NFTs"],
-      queryFn: () => fetchData("https://nft-market.onrender.com/tokens"),
+      queryFn: () =>
+        fetchData(
+          "https://nft-marketplace-be-983ee086ba8a.herokuapp.com/tokens",
+        ),
     },
     {
       queryKey: ["collections"],
-      queryFn: () => fetchData("https://nft-market.onrender.com/collections"),
+      queryFn: () =>
+        fetchData(
+          "https://nft-marketplace-be-983ee086ba8a.herokuapp.com/collections",
+        ),
     },
     {
       queryKey: ["rankingsOneDay"],
       queryFn: () =>
-        fetchData("https://nft-market.onrender.com/rankings/oneDay"),
+        fetchData(
+          "https://nft-marketplace-be-983ee086ba8a.herokuapp.com/rankings/oneDay",
+        ),
     },
     {
       queryKey: ["rankingsSevenDays"],
       queryFn: () =>
-        fetchData("https://nft-market.onrender.com/rankings/sevenDays"),
+        fetchData(
+          "https://nft-marketplace-be-983ee086ba8a.herokuapp.com/rankings/sevenDays",
+        ),
     },
     {
       queryKey: ["rankingsThirtyDays"],
       queryFn: () =>
-        fetchData("https://nft-market.onrender.com/rankings/thirtyDays"),
+        fetchData(
+          "https://nft-marketplace-be-983ee086ba8a.herokuapp.com/rankings/thirtyDays",
+        ),
     },
   ];
 
