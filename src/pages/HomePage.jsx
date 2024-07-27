@@ -7,27 +7,34 @@ import Home from "../components/Home";
 import HowItWorks from "../components/HowItWorks";
 import Subscribe from "../components/Subscribe";
 import Trending from "../components/Trending";
-import { DataContext } from "../store/DataContext";
 import Spinner from "../components/Spinner";
+import useTokens from "../hooks/useTokens";
+import useCollections from "../hooks/useCollections";
 
 export default function HomePage() {
-  const { NFTsData } = useContext(DataContext);
-  return (
-    <>
-      {NFTsData.length > 0 ? (
-        <div>
-          <Home />
-          <Trending />
-          <Creators />
-          <Category />
-          <Discover />
-          <Highlighted />
-          <HowItWorks />
-          <Subscribe />
-        </div>
-      ) : (
-        <Spinner />
-      )}
-    </>
-  );
+	const NFTs = useTokens();
+	const Collections = useCollections();
+
+	if (NFTs.isError || Collections.isError) {
+		throw new Error("Failed to fetch tokens data.");
+	}
+
+	return (
+		<>
+			{NFTs.isLoading || Collections.isLoading ? (
+				<Spinner />
+			) : (
+				<>
+					<Home />
+					<Trending />
+					<Creators />
+					<Category />
+					<Discover />
+					<Highlighted />
+					<HowItWorks />
+					<Subscribe />
+				</>
+			)}
+		</>
+	);
 }
