@@ -51,7 +51,11 @@ function App() {
 								<Route path="/connect" element={<ConnectPage />} />
 								<Route path="/register" element={<RegisterPage />} />
 								<Route path="/login" element={<LoginPage />} />
-								<Route path="/collection/:id" element={<CollectionPage />} />
+								<Route
+									path="/collection/:id"
+									element={<CollectionPage />}
+									errorElement={<ErrorPage />}
+								/>
 								<Route path="*" element={<NotFoundPage />} />
 							</Routes>
 						</Suspense>

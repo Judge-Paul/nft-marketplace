@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { RxGlobe, RxDiscordLogo, RxTwitterLogo } from "react-icons/rx";
 import { useParams } from "react-router-dom";
-import { DataContext } from "../store/DataContext";
 import Spinner from "../components/Spinner";
 import { formatNum } from "../libs/Functions";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import useCollection from "../hooks/useCollection";
 
 function copyToClipboard(text) {
 	navigator.clipboard.writeText(text);
@@ -17,17 +17,18 @@ function copyToClipboard(text) {
 
 export default function CollectionPage() {
 	const [selected, setSelected] = useState("");
-	const [collectionData, setCollectionData] = useState(null);
-	// const { collectionsData } = useContext(DataContext);
 	const { id } = useParams();
 
-	useEffect(() => {
-		setCollectionData(collectionsData?.filter((item) => item.slug === id));
-	}, [id, collectionsData]);
+	const { data, isLoading, error } = useCollection(id);
+
+	if (error) {
+		throw new Error("Failed to fetch collection data.");
+	}
+
 	return (
 		<>
-			{collectionData ? (
-				collectionData.map((collection) => {
+			{!isLoading ? (
+				data.map((collection) => {
 					return (
 						<div key={collection.id} className="text-white font-workSans">
 							{collection.banner && (
@@ -37,7 +38,9 @@ export default function CollectionPage() {
 								></div>
 							)}
 							<div
-								className={`px-8 sm:px-32 ${collection.banner ? "" : "mt-20"}`}
+								className={`max-w-7xl mx-auto px-8 sm:px-32 2xl:px-0 ${
+									collection.banner ? "" : "mt-20"
+								}`}
 							>
 								<a href={collection.externalUrl}>
 									<motion.img
