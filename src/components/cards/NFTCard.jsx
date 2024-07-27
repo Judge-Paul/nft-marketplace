@@ -10,6 +10,7 @@ export default function NFTCard({
 	artist,
 	artistAvatar,
 	price,
+	bidToken,
 	className,
 	small,
 }) {
@@ -52,10 +53,7 @@ export default function NFTCard({
 						<div>
 							<h4 className="mb-1 text-xs">Highest Bid</h4>
 							<p>
-								{price
-									? (Math.random() * price).toFixed(2)
-									: Math.random().toFixed(2)}{" "}
-								wETH
+								{bidToken ? ` ${bidToken}` : `${Math.random().toFixed(2)} wETH`}
 							</p>
 						</div>
 					</div>
