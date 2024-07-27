@@ -7,7 +7,7 @@ import AuthProvider from "./store/AuthContext";
 import Spinner from "./components/Spinner";
 import { Toaster } from "sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import DataProvider from "./store/DataContext";
+import ErrorPage from "./pages/ErrorPage";
 
 const queryClient = new QueryClient();
 
@@ -39,20 +39,22 @@ function App() {
 					<AuthProvider>
 						<Navbar />
 						<ScrollToTop />
-						<DataProvider>
-							<Suspense fallback={<Spinner />}>
-								<Routes>
-									<Route path="/" element={<HomePage />} />
-									<Route path="/marketplace" element={<MarketplacePage />} />
-									<Route path="/rankings" element={<RankingsPage />} />
-									<Route path="/connect" element={<ConnectPage />} />
-									<Route path="/register" element={<RegisterPage />} />
-									<Route path="/login" element={<LoginPage />} />
-									<Route path="/collection/:id" element={<CollectionPage />} />
-									<Route path="*" element={<NotFoundPage />} />
-								</Routes>
-							</Suspense>
-						</DataProvider>
+						<Suspense fallback={<Spinner />}>
+							<Routes>
+								<Route
+									path="/"
+									element={<HomePage />}
+									errorElement={<ErrorPage />}
+								/>
+								<Route path="/marketplace" element={<MarketplacePage />} />
+								<Route path="/rankings" element={<RankingsPage />} />
+								<Route path="/connect" element={<ConnectPage />} />
+								<Route path="/register" element={<RegisterPage />} />
+								<Route path="/login" element={<LoginPage />} />
+								<Route path="/collection/:id" element={<CollectionPage />} />
+								<Route path="*" element={<NotFoundPage />} />
+							</Routes>
+						</Suspense>
 						<Footer />
 					</AuthProvider>
 				</QueryClientProvider>
