@@ -120,6 +120,7 @@ export default function RankingsPage() {
 								<RankingsCard
 									key={collection.id}
 									id={collection.id}
+									slug={collection.slug}
 									position={index + 1}
 									artist={collection.name}
 									icon={
@@ -139,6 +140,7 @@ export default function RankingsPage() {
 								<RankingsCard
 									key={collection.id}
 									id={collection.id}
+									slug={collection.slug}
 									position={index + 1}
 									artist={collection.name}
 									icon={
@@ -158,6 +160,7 @@ export default function RankingsPage() {
 								<RankingsCard
 									key={collection.id}
 									id={collection.id}
+									slug={collection.slug}
 									position={index + 1}
 									artist={collection.name}
 									icon={
