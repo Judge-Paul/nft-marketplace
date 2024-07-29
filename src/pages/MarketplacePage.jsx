@@ -11,6 +11,7 @@ import Spinner from "../components/Spinner";
 export default function MarketplacePage() {
 	const [selected, setSelected] = useState("collections");
 	const NFTsData = useTokens();
+	console.log(NFTsData.data);
 	const collectionsData = useCollections();
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 12;
@@ -72,7 +73,7 @@ export default function MarketplacePage() {
 				</h4>
 				<p className="text-lg lg:text-[1.55rem] mt-5 lg:mt-10 font-medium">
 					Browse through more than {formatNum(NFTsData.data.length)} NFTs on the
-					NFT Marketplace and purchase from OpenSea
+					Marketplace and purchase from OpenSea
 				</p>
 				<div className="relative mt-7 w-full">
 					<input

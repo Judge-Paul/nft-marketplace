@@ -19,8 +19,8 @@ export default function Home() {
 						</h4>
 					</div>
 					<p className="xl:pr-10 text-lg sm:text-[1.35rem] mt-5">
-						Nft Marketplace Ui Created With Anima For Figma. Collect, Buy And
-						Sell Art From More Than 20k Nft Artists.
+						View tokens and collections on Collectiverse. Follow your favourite
+						collectons and find NFTs to purchase on OpenSea.
 					</p>
 					<Link to="/register">
 						<motion.button

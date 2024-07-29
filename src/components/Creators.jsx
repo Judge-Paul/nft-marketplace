@@ -11,9 +11,11 @@ export default function Creators() {
 		<div className="mt-20 mb-20 lg:mb-36 font-workSans text-white max-w-7xl mx-auto">
 			<div className="flex justify-between px-8 sm:px-32 2xl:px-0">
 				<div>
-					<h4 className="text-3xl lg:text-[2.5rem] font-bold">Top Creators</h4>
+					<h4 className="text-3xl lg:text-[2.5rem] font-bold">
+						Top Collections
+					</h4>
 					<p className="text-lg lg:text-[1.35rem] mt-5 font-medium">
-						Checkout Top Rated Creators On the NFT Marketplace
+						Checkout Top Rated Collections in the NFT space
 					</p>
 				</div>
 				<Link to="/rankings">

@@ -19,19 +19,14 @@ function Navbar() {
 				<div className="px-2 py-4 sm:px-6 xl:px-20 2xl:px-0 mx-auto max-w-7xl">
 					<div className="flex justify-between">
 						<div className="flex-shrink-0 flex items-center">
-							<Link to="/" className="text-white font-semibold text-xl flex">
-								<BiStoreAlt
-									className="text-[#A259FF] mr-1 sm:mr-4"
-									size="32px"
-								/>
-								<img
-									src={Logo}
-									alt="NFT Marketplace Logo"
-									className="mt-2"
-									onClick={() => {
-										setIsOpen(false);
-									}}
-								/>
+							<Link
+								to="/"
+								className="text-white font-semibold text-xl flex items-center"
+							>
+								<BiStoreAlt className="text-[#A259FF]" size="34px" />
+								<h4 className="pl-3 text-[22px] text-white font-bold font-spaceMono">
+									Collectiverse
+								</h4>
 							</Link>
 						</div>
 						<div className="hidden md:block my-auto font-workSans font-bold">
@@ -109,7 +104,7 @@ function Navbar() {
 						<BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
 						<img
 							src={Logo}
-							alt="NFT Marketplace Logo"
+							alt="Collectiverse Logo"
 							className="mt-2"
 							onClick={() => {
 								setIsOpen(false);

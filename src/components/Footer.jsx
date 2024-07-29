@@ -12,12 +12,12 @@ export default function Footer() {
 				<div className="text-[#CCCCCC] font-workSans text-lg mt-10 lg:mt-0">
 					<div className="flex mb-4">
 						<BiStoreAlt className="text-[#A259FF]" size="30px" />
-						<h4 className="mb-5 pl-3 text-xl text-white font-bold font-spaceMono">
-							NFT Marketplace
+						<h4 className="mb-5 my-auto pl-3 text-xl text-white font-bold font-spaceMono">
+							Collectiverse
 						</h4>
 					</div>
 					<h4>
-						NFT marketplace created by{" "}
+						Collectiverse built by{" "}
 						<a
 							href="https://twitter.com/jadge_dev"
 							className="text-blue-500 hover:text-blue-700"
@@ -25,7 +25,22 @@ export default function Footer() {
 							Paul
 						</a>
 					</h4>
-					<p className="mt-3">Join our community</p>
+					<p>
+						Design by{" "}
+						<a
+							href="https://twitter.com/jadge_dev"
+							className="text-blue-500 hover:text-blue-700"
+						>
+							Anima
+						</a>{" "}
+						available on{" "}
+						<a
+							href="https://www.figma.com/design/dNbqPyXKjAFynGXIk8CZYl/NFT-Marketplace-Template---Create-an-NFT-website-in-minutes-(Community)?m=auto&is-community-duplicate=1&fuid=1159161114513421498"
+							className="text-blue-500 hover:text-blue-700"
+						>
+							Figma
+						</a>
+					</p>
 					<div className="flex mt-3">
 						<a href="https://www.discord.com">
 							<RxDiscordLogo size="30px" className="mr-3" />

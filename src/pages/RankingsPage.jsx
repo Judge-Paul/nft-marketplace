@@ -38,7 +38,7 @@ export default function RankingsPage() {
 			<div className="px-8 sm:px-32 2xl:px-0 mb-10 lg:mb-20">
 				<h4 className="text-3xl lg:text-[3.5rem] font-bold">Top Creators</h4>
 				<p className="text-lg lg:text-[1.55rem] mt-5 lg:mt-10 font-medium">
-					Check out top ranking NFT artists on the NFT Marketplace.
+					Check out top ranking NFT collections on the Collectiverse.
 				</p>
 			</div>
 			<div className="px-8 sm:px-32 2xl:px-0 grid grid-cols-4 text-[#3b3b3b]">
