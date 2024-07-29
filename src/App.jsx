@@ -8,6 +8,7 @@ import Spinner from "./components/Spinner";
 import { Toaster } from "sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorPage from "./pages/ErrorPage";
+import { Helmet } from "react-helmet";
 
 const queryClient = new QueryClient();
 
@@ -33,8 +34,11 @@ function App() {
 
 	return (
 		<div className="bg-[#2B2B2B] scrollbar-hide">
+			<Helmet>
+				<title>Collectiverse</title>
+			</Helmet>
 			<BrowserRouter>
-				<Toaster />
+				<Toaster richColors position="top-right" />
 				<QueryClientProvider client={queryClient}>
 					<AuthProvider>
 						<Navbar />
@@ -47,7 +51,11 @@ function App() {
 									errorElement={<ErrorPage />}
 								/>
 								<Route path="/marketplace" element={<MarketplacePage />} />
-								<Route path="/rankings" element={<RankingsPage />} />
+								<Route
+									path="/rankings"
+									element={<RankingsPage />}
+									errorElement={<ErrorPage />}
+								/>
 								<Route path="/connect" element={<ConnectPage />} />
 								<Route path="/register" element={<RegisterPage />} />
 								<Route path="/login" element={<LoginPage />} />

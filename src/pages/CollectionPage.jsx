@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import useCollection from "../hooks/useCollection";
 import NotFound from "../components/CollectionNotFound";
 import CollectionLoading from "../components/CollectionLoading";
+import { Helmet } from "react-helmet";
 
 function copyToClipboard(text) {
 	navigator.clipboard.writeText(text);
@@ -36,6 +37,9 @@ export default function CollectionPage() {
 
 	return (
 		<div className="text-white font-workSans">
+			<Helmet>
+				<title>Collectiverse | {collection?.name}</title>
+			</Helmet>
 			{collection.banner && (
 				<div
 					className="bg-cover h-96 bg-center"
