@@ -1,15 +1,12 @@
-import { Context, Hono, Next } from "hono";
-import { env } from "hono/adapter";
-import { cors } from "hono/cors";
+import app from "@services/index";
+import update from "@services/update";
+import { Env } from "@types";
 
-type ENV_VARS = {};
-
-const app = new Hono();
-
-app.use("/*", cors());
-
-app.get("/", (c) => {
-	return c.json("Hello World");
-});
-
-export default app;
+export default {
+	async fetch(request: Request, env: Env) {
+		return await app.fetch(request, env);
+	},
+	async scheduled(ctl: ScheduledController, env: Env, ctx: ExecutionContext) {
+		await update(env);
+	},
+};
