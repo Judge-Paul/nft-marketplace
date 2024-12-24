@@ -29,4 +29,28 @@ app.get("/tokens", async (c) => {
 	}
 });
 
+app.get("/collections", async (c) => {
+	let sortBy = c.req.query("sortBy");
+
+	if (!sortBy) {
+		sortBy = "allTimeVolume";
+	}
+
+	try {
+		const data = await c.env.NFT_MARKETPLACE.get(sortBy);
+		const collections = JSON.parse(data || "null");
+
+		if (!collections || collections.length === 0) {
+			c.status(404);
+			return c.json({ error: "No collections found" });
+		}
+
+		return c.json(collections);
+	} catch (err) {
+		console.log(err);
+		c.status(500);
+		return c.json({ error: "Internal server error" });
+	}
+});
+
 export default app;
