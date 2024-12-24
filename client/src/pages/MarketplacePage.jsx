@@ -7,11 +7,11 @@ import ReactPaginate from "react-paginate";
 import useCollections from "../hooks/useCollections";
 import useTokens from "../hooks/useTokens";
 import Spinner from "../components/Spinner";
+import ErrorPage from "./ErrorPage";
 
 export default function MarketplacePage() {
 	const [selected, setSelected] = useState("collections");
 	const NFTsData = useTokens();
-	console.log(NFTsData.data);
 	const collectionsData = useCollections();
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 12;
@@ -20,8 +20,12 @@ export default function MarketplacePage() {
 		setCurrentPage(selectedPage.selected);
 	};
 
-	if (NFTsData.isLoading || collectionsData.isLoading) {
+	if (NFTsData.isPending || collectionsData.isPending) {
 		return <Spinner />;
+	}
+
+	if (NFTsData.isError || collectionsData.isError) {
+		return <ErrorPage />;
 	}
 
 	const nftsToDisplay = NFTsData.data.slice(

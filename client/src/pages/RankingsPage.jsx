@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import RankingsCard from "../components/cards/RankingsCard";
 import useCollections from "../hooks/useCollections";
 import Spinner from "../components/Spinner";
+import ErrorPage from "./ErrorPage";
 
 export default function RankingsPage() {
 	const [selected, setSelected] = useState("Today");
@@ -25,7 +26,7 @@ export default function RankingsPage() {
 		thirtyDays.isError ||
 		allTime.isError
 	) {
-		throw new Error("Failed to fetch rankings data.");
+		<ErrorPage />;
 	}
 
 	const rankingsOneDay = oneDay.data;
