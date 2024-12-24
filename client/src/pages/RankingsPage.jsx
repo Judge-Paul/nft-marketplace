@@ -12,10 +12,10 @@ export default function RankingsPage() {
 	const allTime = useCollections();
 
 	if (
-		oneDay.isLoading ||
-		sevenDays.isLoading ||
-		thirtyDays.isLoading ||
-		allTime.isLoading
+		oneDay.isPending ||
+		sevenDays.isPending ||
+		thirtyDays.isPending ||
+		allTime.isPending
 	) {
 		return <Spinner />;
 	}
@@ -26,7 +26,7 @@ export default function RankingsPage() {
 		thirtyDays.isError ||
 		allTime.isError
 	) {
-		<ErrorPage />;
+		return <ErrorPage />;
 	}
 
 	const rankingsOneDay = oneDay.data;
@@ -81,7 +81,7 @@ export default function RankingsPage() {
 				<div className="flex rounded-full px-5 sm:px-12 py-3 border border-[#3B3B3B] font-spaceMono text-[#858584] text-sm md:text-md lg:text-lg">
 					<div className="flex flex-1">
 						<span>#</span>
-						<p className="ml-7">Artist</p>
+						<p className="ml-7">Collection</p>
 					</div>
 					<div className="hidden md:flex flex-1 justify-between lg:pr-20">
 						<p>Change</p>
