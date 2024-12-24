@@ -13,27 +13,27 @@ import { Helmet } from "react-helmet";
 
 function copyToClipboard(text) {
 	navigator.clipboard.writeText(text);
-	toast.message("Address copied!");
+	toast.info("Address copied!");
 }
 
 export default function CollectionPage() {
 	const { id } = useParams();
 
-	const { data, isLoading, error } = useCollection(id);
+	const { data, isPending, error } = useCollection(id);
 
-	if (error) {
-		throw new Error("Failed to fetch collection data.");
-	}
+	// if (error) {
+	// 	<ErrorPage />;
+	// }
 
-	if (isLoading) {
+	if (isPending) {
 		return <CollectionLoading />;
 	}
 
-	if (data?.length === 0) {
+	if (data?.length === 0 || !data?.[0]) {
 		return <NotFound />;
 	}
 
-	const collection = data?.[0];
+	const collection = data[0];
 
 	return (
 		<div className="text-white font-workSans">
@@ -42,7 +42,7 @@ export default function CollectionPage() {
 			</Helmet>
 			{collection.banner && (
 				<div
-					className="bg-cover h-96 bg-center"
+					className="bg-cover h-96 bg-center bg-white/90"
 					style={{ backgroundImage: `url(${collection.banner})` }}
 				></div>
 			)}
@@ -63,20 +63,24 @@ export default function CollectionPage() {
 						{collection.name}
 					</h4>
 					<div className="sm:flex gap-5">
-						<button
+						<motion.button
+							whileHover={{ scale: 0.92 }}
 							onClick={() => copyToClipboard(collection.id)}
 							className="mt-5 flex justify-center bg-[#A259FF] px-6 py-4 font-bold rounded-2xl w-full"
 						>
 							<BiCopy size="20px" className="my-auto mr-2" />
 							{collection.id.slice(0, 6) + "..." + collection.id.slice(-4)}
-						</button>
-						<button className="mt-5 flex justify-center border-2 border-[#A259FF] px-7 py-4 font-bold rounded-2xl w-full">
+						</motion.button>
+						<motion.button
+							whileHover={{ scale: 0.92 }}
+							className="mt-5 flex justify-center border-2 border-[#A259FF] px-7 py-4 font-bold rounded-2xl w-full"
+						>
 							<AiOutlinePlus
 								size="22px"
 								className="my-auto mr-2 text-[#A259FF]"
 							/>
 							Follow
-						</button>
+						</motion.button>
 					</div>
 				</div>
 				<div className="mt-10">
