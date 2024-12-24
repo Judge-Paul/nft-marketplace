@@ -60,7 +60,7 @@ function App() {
 								<Route path="/register" element={<RegisterPage />} />
 								<Route path="/login" element={<LoginPage />} />
 								<Route
-									path="/collection/:id"
+									path="/collection/:slug"
 									element={<CollectionPage />}
 									errorElement={<ErrorPage />}
 								/>

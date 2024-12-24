@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
@@ -10,6 +10,7 @@ import useCollection from "../hooks/useCollection";
 import NotFound from "../components/CollectionNotFound";
 import CollectionLoading from "../components/CollectionLoading";
 import { Helmet } from "react-helmet";
+import NFTCard, { LoadingNFTCard } from "../components/cards/NFTCard";
 
 function copyToClipboard(text) {
 	navigator.clipboard.writeText(text);
@@ -17,23 +18,22 @@ function copyToClipboard(text) {
 }
 
 export default function CollectionPage() {
-	const { id } = useParams();
+	const { slug } = useParams();
 
-	const { data, isPending, error } = useCollection(id);
-
-	// if (error) {
-	// 	<ErrorPage />;
-	// }
+	const { isPending, isError, data } = useCollection(slug);
 
 	if (isPending) {
 		return <CollectionLoading />;
 	}
 
-	if (data?.length === 0 || !data?.[0]) {
+	if (isError) {
 		return <NotFound />;
 	}
 
-	const collection = data[0];
+	const [collectionsData, tokensData] = data;
+
+	const collection = collectionsData[0];
+	const tokens = tokensData.tokens;
 
 	return (
 		<div className="text-white font-workSans">
@@ -141,6 +141,38 @@ export default function CollectionPage() {
 							</a>
 						)}
 					</div>
+					{!isError && (
+						<>
+							<div className="mt-10">
+								<h4 className="text-center sm:text-xl font-semibold w-full py-4 border-b-[4px] border-white">
+									Available NFTs
+									{/* <span className="font-spaceMono ml-3 p-2 px-3 rounded-full bg-[#858584] text-xs sm:text-lg">
+											{25}
+										</span> */}
+								</h4>
+							</div>
+							<div className="-mx-8 sm:-mx-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center px-8 lg:px-32 pt-6 pb-10 border-b-[2px] border-black">
+								{tokens.map((nft) => (
+									<NFTCard
+										key={`${nft.token.collection.id}:${nft.token.tokenId}`}
+										id={nft.token.collection.id}
+										tokenId={nft.token.tokenId}
+										image={nft.token.image}
+										title={nft.token.name}
+										artist={nft.token.collection.slug}
+										artistAvatar={
+											nft.token.collection.image
+												? nft.token.collection.image
+												: nft.token.collection.imageUrl
+										}
+										className={"bg-[#2B2B2B]"}
+										price={nft?.market?.floorAsk?.price?.amount?.decimal}
+										highestBid={(Math.random() * 10).toFixed(2)}
+									/>
+								))}
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

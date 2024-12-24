@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 export default function NFTCard({
 	id,
@@ -60,5 +61,34 @@ export default function NFTCard({
 				</div>
 			</motion.div>
 		</Link>
+	);
+}
+
+export function LoadingNFTCard({ className, small }) {
+	return (
+		<div
+			className={`rounded-3xl ${className} ${
+				small ? "w-[14.5rem] md:w-96" : "w-72"
+			} mt-7`}
+		>
+			<Loader className="rounded-t-3xl h-72 w-full" />
+			<div className="p-7">
+				<Loader className="h-8 w-3/4 mb-4 rounded-xl" />
+				<div className="flex mb-3 mt-1">
+					<Loader className="h-[40px] w-[40px] rounded-full" />
+					<Loader className="h-6 w-1/2 ml-2 my-auto rounded-xl" />
+				</div>
+				<div className="flex justify-between">
+					<div>
+						<Loader className="h-4 w-12 mb-1 rounded-xl" />
+						<Loader className="h-6 w-20 rounded-xl" />
+					</div>
+					<div>
+						<Loader className="h-4 w-20 mb-1 rounded-xl" />
+						<Loader className="h-6 w-20 rounded-xl" />
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 }

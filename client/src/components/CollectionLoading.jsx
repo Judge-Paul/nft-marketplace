@@ -1,3 +1,4 @@
+import { LoadingNFTCard } from "./cards/NFTCard";
 import Loader from "./Loader";
 
 export default function CollectionLoading() {
@@ -42,6 +43,11 @@ export default function CollectionLoading() {
 						<Loader className="w-10 h-10 rounded-2xl mr-5" />
 						<Loader className="w-10 h-10 rounded-2xl mr-5" />
 						<Loader className="w-10 h-10 rounded-2xl mr-5" />
+					</div>
+					<div className="-mx-8 sm:-mx-32 grid md:grid-cols-2 xl:grid-cols-3 justify-items-center px-8 lg:px-32 pt-6 pb-10 border-b-[2px] border-black">
+						<LoadingNFTCard />
+						<LoadingNFTCard />
+						<LoadingNFTCard />
 					</div>
 				</div>
 			</div>

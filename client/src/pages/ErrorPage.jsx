@@ -5,7 +5,7 @@ import Astronaut from "../assets/subscribe-bg.webp";
 export default function ErrorPage() {
 	return (
 		<div className="min-h-screen flex justify-center object-center max-w-7xl 2xl:mx-auto xl:mx-36">
-			<div className="mb-20 lg:mt-20 px-8 sm:px-20 lg:px-0 lg:w-1/2 text-white font-workSans">
+			<div className="mb-20 px-8 sm:px-20 lg:px-0 lg:w-1/2 text-white font-workSans">
 				<img src={Astronaut} className="lg: mx-auto" />
 				<h4 className="mt-8 text-xl lg:text-[2.5rem] text-center font-bold">
 					Uh-oh! Something&apos;s Not Right.
