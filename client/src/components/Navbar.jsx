@@ -102,14 +102,9 @@ function Navbar() {
 				>
 					<Link to="/" className="text-white font-semibold text-xl flex">
 						<BiStoreAlt className="text-[#A259FF] mr-1 sm:mr-4" size="32px" />
-						<img
-							src={Logo}
-							alt="Collectiverse Logo"
-							className="mt-2"
-							onClick={() => {
-								setIsOpen(false);
-							}}
-						/>
+						<h4 className="pl-1.5 text-[22px] text-white font-bold font-spaceMono">
+							Collectiverse
+						</h4>
 					</Link>
 					<button
 						onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}

@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { get } from "../libs/api";
+import axios from "axios";
 
 const useCollection = (slug) =>
 	useQuery({
 		queryKey: ["collection", slug],
 		queryFn: async () => {
-			const data = await get(`/collections/v6?slug=${slug}`);
+			const data = await axios.get(
+				`https://api.reservoir.tools/collections/v6?slug=${slug}`,
+			);
 			if (data.data) {
 				return data.data.collections;
 			}
