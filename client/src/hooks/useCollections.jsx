@@ -5,9 +5,9 @@ const useCollections = (sortBy = "allTimeVolume") =>
 	useQuery({
 		queryKey: ["collections", sortBy],
 		queryFn: async () => {
-			const data = await get(`/collections/v7?sortBy=${sortBy}`);
+			const data = await get(`/collections?sortBy=${sortBy}`);
 			if (data.data) {
-				return data.data.collections;
+				return data.data;
 			}
 			throw new Error("Collections request failed.");
 		},

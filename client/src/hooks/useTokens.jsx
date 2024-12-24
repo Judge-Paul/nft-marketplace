@@ -5,11 +5,9 @@ const useTokens = () =>
 	useQuery({
 		queryKey: ["tokens"],
 		queryFn: async () => {
-			const data = await get(
-				"/tokens/v7?limit=150&includeTopBid=true&minFloorAskPrice=0.1&sortBy=updatedAt",
-			);
+			const data = await get("/tokens");
 			if (data.data) {
-				return data.data.tokens;
+				return data.data;
 			}
 			throw new Error("Tokens request failed.");
 		},
