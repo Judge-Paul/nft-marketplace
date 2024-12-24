@@ -2,11 +2,19 @@ import { Env } from "@types";
 import { getCollections, getTokens, TOKEN_KEY } from "@utils";
 
 export default async function update(env: Env) {
-	const tokens = await getTokens();
-	const allTimeVolume = await getCollections();
-	const oneDayVolume = await getCollections("1DayVolume");
-	const sevenDaysVolume = await getCollections("7DayVolume");
-	const thirtyDaysVolume = await getCollections("30DayVolume");
+	const [
+		tokens,
+		allTimeVolume,
+		oneDayVolume,
+		sevenDaysVolume,
+		thirtyDaysVolume,
+	] = await Promise.all([
+		getTokens(),
+		getCollections(),
+		getCollections("1DayVolume"),
+		getCollections("7DayVolume"),
+		getCollections("30DayVolume"),
+	]);
 
 	if (tokens && tokens?.length > 0) {
 		env.NFT_MARKETPLACE.put(TOKEN_KEY, JSON.stringify(tokens));
@@ -19,20 +27,17 @@ export default async function update(env: Env) {
 	}
 
 	if (oneDayVolume && oneDayVolume?.length > 0) {
-		env.NFT_MARKETPLACE.put("oneDayVolume", JSON.stringify(oneDayVolume));
+		env.NFT_MARKETPLACE.put("1DayVolume", JSON.stringify(oneDayVolume));
 		console.log("Updated one day volume data");
 	}
 
 	if (sevenDaysVolume && sevenDaysVolume?.length > 0) {
-		env.NFT_MARKETPLACE.put("sevenDaysVolume", JSON.stringify(sevenDaysVolume));
+		env.NFT_MARKETPLACE.put("7DayVolume", JSON.stringify(sevenDaysVolume));
 		console.log("Updated seven day volume data");
 	}
 
 	if (thirtyDaysVolume && thirtyDaysVolume?.length > 0) {
-		env.NFT_MARKETPLACE.put(
-			"thirtyDaysVolume",
-			JSON.stringify(thirtyDaysVolume),
-		);
+		env.NFT_MARKETPLACE.put("30DayVolume", JSON.stringify(thirtyDaysVolume));
 		console.log("Updated thirty day volume data");
 	}
 }
