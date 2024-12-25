@@ -16,6 +16,9 @@ export default async function update(env: Env) {
 		getCollections("30DayVolume"),
 	]);
 
+	console.log("envs", env);
+	console.log("nft env", env.NFT_MARKETPLACE);
+
 	if (tokens && tokens?.length > 0) {
 		await env.NFT_MARKETPLACE.put(TOKEN_KEY, JSON.stringify(tokens));
 		console.log("Updated tokens data");
