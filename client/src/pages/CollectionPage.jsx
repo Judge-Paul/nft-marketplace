@@ -10,7 +10,7 @@ import useCollection from "../hooks/useCollection";
 import NotFound from "../components/CollectionNotFound";
 import CollectionLoading from "../components/CollectionLoading";
 import { Helmet } from "react-helmet";
-import NFTCard, { LoadingNFTCard } from "../components/cards/NFTCard";
+import NFTCard from "../components/cards/NFTCard";
 
 function copyToClipboard(text) {
 	navigator.clipboard.writeText(text);
@@ -22,18 +22,15 @@ export default function CollectionPage() {
 
 	const { isPending, isError, data } = useCollection(slug);
 
-	if (isPending) {
-		return <CollectionLoading />;
-	}
-
 	if (isError) {
 		return <NotFound />;
 	}
 
-	const [collectionsData, tokensData] = data;
+	if (isPending) {
+		return <CollectionLoading />;
+	}
 
-	const collection = collectionsData[0];
-	const tokens = tokensData.tokens;
+	const { collection, tokens } = data;
 
 	return (
 		<div className="text-white font-workSans">
