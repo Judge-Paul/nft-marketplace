@@ -5,11 +5,11 @@ import useCollections from "../hooks/useCollections";
 export default function Trending() {
 	const { data } = useCollections();
 	return (
-		<div className="mt-20 mb-20 lg:mb-36 font-workSans sm:px-32 max-w-7xl mx-auto 2xl:px-0 text-white">
-			<h4 className="text-3xl md:text-[2.5rem] font-bold">
+		<div className="mt-20 mb-20 lg:mb-36 font-workSans px-8 sm:px-32 max-w-7xl mx-auto 2xl:px-0 text-white">
+			<h4 className="text-2xl sm:text-3xl md:text-[2.5rem] font-bold">
 				Trending Collection
 			</h4>
-			<p className="text-lg sm:text-[1.35rem] mt-5 font-medium">
+			<p className="text-md sm:text-lg sm:text-[1.35rem] mt-5 font-medium">
 				Checkout Our Weekly Updated Trending Collection.
 			</p>
 			<div className="flex flex-wrap justify-center gap-7 place-center">
