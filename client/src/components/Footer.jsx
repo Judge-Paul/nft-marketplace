@@ -28,17 +28,26 @@ export default function Footer() {
 					<p>
 						Design by{" "}
 						<a
-							href="https://twitter.com/jadge_dev"
+							href="https://www.figma.com/@anima"
 							className="text-blue-500 hover:text-blue-700"
 						>
 							Anima
 						</a>{" "}
 						available on{" "}
 						<a
-							href="https://www.figma.com/design/dNbqPyXKjAFynGXIk8CZYl/NFT-Marketplace-Template---Create-an-NFT-website-in-minutes-(Community)?m=auto&is-community-duplicate=1&fuid=1159161114513421498"
+							href="https://www.figma.com/community/file/1173962104946517060"
 							className="text-blue-500 hover:text-blue-700"
 						>
 							Figma
+						</a>
+					</p>
+					<p>
+						Powered by{" "}
+						<a
+							href="https://reservoir.tools"
+							className="text-blue-500 hover:text-blue-700"
+						>
+							Reservoir
 						</a>
 					</p>
 					<div className="flex mt-3">
