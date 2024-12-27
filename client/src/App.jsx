@@ -19,6 +19,7 @@ const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RankingsPage = lazy(() => import("./pages/RankingsPage"));
 const CollectionPage = lazy(() => import("./pages/CollectionPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
@@ -62,6 +63,11 @@ function App() {
 								<Route
 									path="/collection/:slug"
 									element={<CollectionPage />}
+									errorElement={<ErrorPage />}
+								/>
+								<Route
+									path="/search"
+									element={<SearchPage />}
 									errorElement={<ErrorPage />}
 								/>
 								<Route path="*" element={<NotFoundPage />} />

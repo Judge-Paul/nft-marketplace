@@ -1,20 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import NFTCard from "../components/cards/NFTCard";
 import CollectionCard from "../components/cards/CollectionCard";
-import { formatNum } from "../libs/Functions";
 import ReactPaginate from "react-paginate";
 import useCollections from "../hooks/useCollections";
 import useTokens from "../hooks/useTokens";
 import Spinner from "../components/Spinner";
 import ErrorPage from "./ErrorPage";
+import { useNavigate } from "react-router-dom";
 
 export default function MarketplacePage() {
-	const [selected, setSelected] = useState("collections");
+	const [searchTerm, setSearchTerm] = useState("");
+	const [selected, setSelected] = useState("nfts");
+
 	const NFTsData = useTokens();
 	const collectionsData = useCollections();
+
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 12;
+
+	const navigate = useNavigate();
 
 	const handlePageChange = (selectedPage) => {
 		setCurrentPage(selectedPage.selected);
@@ -27,6 +32,10 @@ export default function MarketplacePage() {
 	if (NFTsData.isError || collectionsData.isError) {
 		return <ErrorPage />;
 	}
+
+	const navigateToSearch = () => {
+		navigate(`/search?q=${searchTerm}`);
+	};
 
 	const nftsToDisplay = NFTsData.data.slice(
 		currentPage * itemsPerPage,
@@ -76,16 +85,22 @@ export default function MarketplacePage() {
 					Browse Marketplace
 				</h4>
 				<p className="text-lg lg:text-[1.55rem] mt-5 lg:mt-10 font-medium">
-					Browse through more than {formatNum(NFTsData.data.length)} NFTs on the
-					Marketplace and purchase from OpenSea
+					Browse through more than {Math.floor(NFTsData.data.length / 10) * 10}+
+					NFTs on the Marketplace and purchase from OpenSea
 				</p>
 				<div className="relative mt-7 w-full">
 					<input
 						type="text"
+						value={searchTerm}
+						onChange={(e) => setSearchTerm(e.target.value)}
 						className="py-4 px-5 w-full rounded-2xl bg-[#2B2B2B] border border-[#3b3b3b] placeholder-[#3b3b3b] focus:outline-none"
 						placeholder="Search your favourite NFTs"
+						onKeyDown={(e) => e.key === "Enter" && navigateToSearch()}
 					/>
-					<button className="absolute inset-y-0 right-0 text-white">
+					<button
+						onClick={navigateToSearch}
+						className="absolute inset-y-0 right-0 text-white"
+					>
 						<FaSearch className="w-full h-full p-5 " />
 					</button>
 				</div>
