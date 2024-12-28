@@ -9,6 +9,11 @@ import { Toaster } from "sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorPage from "./pages/ErrorPage";
 import { Helmet } from "react-helmet";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
+
+ReactGA.initialize(TRACKING_ID);
 
 const queryClient = new QueryClient();
 
@@ -32,6 +37,10 @@ function App() {
 
 		return null;
 	}
+
+	useEffect(() => {
+		ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+	}, []);
 
 	return (
 		<div className="bg-[#2B2B2B] scrollbar-hide">
