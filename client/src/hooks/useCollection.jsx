@@ -29,7 +29,7 @@ const useCollection = (slug) => {
 		queryKey: ["tokens", slug],
 		queryFn: async () => {
 			const data = await axios.get(
-				`https://api.reservoir.tools/tokens/v7?collection=${collection.id}`,
+				`https://api.reservoir.tools/tokens/v7?collection=${collection.id}&limit=24`,
 			);
 			if (data.data) {
 				return data.data;
