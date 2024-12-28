@@ -11,6 +11,8 @@ const useTokens = () =>
 			}
 			throw new Error("Tokens request failed.");
 		},
+		staleTime: Infinity,
+		cacheTime: Infinity,
 	});
 
 export default useTokens;

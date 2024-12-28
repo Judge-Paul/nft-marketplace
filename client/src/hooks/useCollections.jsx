@@ -11,6 +11,8 @@ const useCollections = (sortBy = "allTimeVolume") =>
 			}
 			throw new Error("Collections request failed.");
 		},
+		staleTime: Infinity,
+		cacheTime: Infinity,
 	});
 
 export default useCollections;
