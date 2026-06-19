@@ -1,51 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { get } from "../libs/api";
 
 const useCollection = (slug) => {
-	const {
-		data: collectionsData,
-		isPending: collectionsPending,
-		isError: collectionsError,
-	} = useQuery({
+	const { data, isPending, isError } = useQuery({
 		queryKey: ["collection", slug],
 		queryFn: async () => {
-			const data = await axios.get(
-				`https://api.reservoir.tools/collections/v6?slug=${slug}`,
-			);
-			if (data.data) {
-				return data.data.collections;
+			const res = await get(`/collection/${slug}`);
+			if (res.data) {
+				return res.data; // { collection, tokens }
 			}
 			throw new Error("Collection request failed.");
 		},
 	});
 
-	const collection = collectionsData?.[0];
+	const collection = data?.collection;
+	const tokens = data?.tokens ?? [];
 
-	const {
-		data: tokensData,
-		isPending: tokensPending,
-		isError: tokensError,
-	} = useQuery({
-		queryKey: ["tokens", slug],
-		queryFn: async () => {
-			const data = await axios.get(
-				`https://api.reservoir.tools/tokens/v7?collection=${collection.id}&limit=24`,
-			);
-			if (data.data) {
-				return data.data;
-			}
-			throw new Error("Tokens from collection request failed.");
-		},
-		enabled: !!collection?.id,
-	});
-
-	const tokens = tokensData?.tokens;
-
-	const isPending = collectionsPending || tokensPending;
-	const isError = collectionsError || tokensError;
-	const data = { collection, tokens };
-
-	return { data, isPending, isError };
+	return {
+		data: { collection, tokens },
+		isPending,
+		isError,
+	};
 };
 
 export default useCollection;

@@ -2,6 +2,8 @@ import { Env } from "@types";
 import { getCollections, getTokens, TOKEN_KEY } from "@utils";
 
 export default async function update(env: Env) {
+	const apiKey = env.ALCHEMY_API_KEY;
+
 	const [
 		tokens,
 		allTimeVolume,
@@ -9,15 +11,12 @@ export default async function update(env: Env) {
 		sevenDaysVolume,
 		thirtyDaysVolume,
 	] = await Promise.all([
-		getTokens(),
-		getCollections(),
-		getCollections("1DayVolume"),
-		getCollections("7DayVolume"),
-		getCollections("30DayVolume"),
+		getTokens(apiKey),
+		getCollections(apiKey),
+		getCollections(apiKey, "1DayVolume"),
+		getCollections(apiKey, "7DayVolume"),
+		getCollections(apiKey, "30DayVolume"),
 	]);
-
-	console.log("envs", env);
-	console.log("nft env", env.NFT_MARKETPLACE);
 
 	if (tokens && tokens?.length > 0) {
 		await env.NFT_MARKETPLACE.put(TOKEN_KEY, JSON.stringify(tokens));

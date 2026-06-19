@@ -44,10 +44,10 @@ export default function Footer() {
 					<p>
 						Powered by{" "}
 						<a
-							href="https://reservoir.tools"
+							href="https://alchemy.com"
 							className="text-blue-500 hover:text-blue-700"
 						>
-							Reservoir
+							Alchemy
 						</a>
 					</p>
 					<div className="flex mt-3">
